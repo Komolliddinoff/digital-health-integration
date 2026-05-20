@@ -1,4 +1,4 @@
-Profile: PatientOfDeath
+Profile: DeceasedPatient
 Parent: UZCorePatient
 Id: patient-of-death
 Title: "Patient of Death"
@@ -6,6 +6,10 @@ Description: "Profile representing the death information of a patient, including
 * ^status = #draft
 * ^experimental = true
 * ^publisher = "Uzinfocom"
+
+* deceased[x] 1..1 MS
+* deceased[x] only dateTime
+* deceasedDateTime ^short = "Date and time of death"
 
 * managingOrganization MS
 * managingOrganization ^short = "Organization managing the record (e.g., hospital or clinic)"
@@ -16,9 +20,9 @@ Description: "Profile representing the death information of a patient, including
 
 
 
-Instance: patient-death-example
-InstanceOf: PatientOfDeath
-Title: "Example Patient Death"
+Instance: deceased-patient-example
+InstanceOf: DeceasedPatient
+Title: "Example instance of a deceased patient."
 Description: "Example instance of Patient Death profile"
 Usage: #example
 
@@ -36,6 +40,7 @@ Usage: #example
   * rank = 1
   * period.start = "2021-05-13"
 * birthDate = "1994-01-27"
+* deceasedDateTime = "2024-03-15T08:30:00+05:00"
 * address[uzAddress]
   * use = #home
   * type = #postal

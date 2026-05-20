@@ -61,7 +61,7 @@ Title: "Condition - Neonatal Jaundice"
 Description: "Example condition representing neonatal jaundice diagnosed in the newborn"
 * clinicalStatus = $condition-clinical#active
 * code.text = "Neonatal jaundice"
-* subject = Reference(patient-of-birth-example)
+* subject = Reference(newborn-patient-example)
 
 
 Instance: location-delivery-room-example
@@ -114,33 +114,6 @@ Description: "Example demonstrating the ManagingOrganizationAttachment extension
 * extension.valueDate = "2026-04-01"
 
 
-Instance: patient-multiple-birth-example
-InstanceOf: Patient
-Usage: #example
-Title: "Multiple Birth Example"
-Description: "Example demonstrating the MultipleBirthFlag extension."
-
-* name.text = "Twin Baby A"
-* gender = #female
-* birthDate = "2026-04-01"
-
-* extension.url = "https://dhp.uz/fhir/integrations/StructureDefinition/multiple-birth-flag"
-* extension.valueBoolean = true
-
-Instance: patient-newborn-birth-time-example
-InstanceOf: Patient
-Usage: #example
-Title: "Newborn Birth Time Example"
-Description: "Example demonstrating the NewbornBirthTime extension."
-
-* name.text = "Baby Example"
-* gender = #male
-* birthDate = "2026-04-01"
-
-* extension.url = "https://dhp.uz/fhir/integrations/StructureDefinition/newborn-birth-time"
-* extension.valueDateTime = "2026-04-01T10:00:00+05:00"
-
-
 
 Instance: practitioner-death-example
 InstanceOf: UZCorePractitioner
@@ -160,3 +133,23 @@ Description: "Example location for death encounter"
 Usage: #example
 
 * name = "Republican Clinical Hospital"
+
+
+
+
+
+Instance: observation-mother-education-example
+InstanceOf: UZCoreSocioeconomicObservation
+Usage: #example
+Title: "Mother Education Observation Example"
+Description: "Example socioeconomic observation representing the education level of the newborn's mother"
+
+* status = #final
+* code = https://terminology.dhp.uz/fhir/core/CodeSystem/socioeconomic-observation-cs#education "Education"
+* subject = Reference(newborn-patient-example)
+* focus = Reference(related-person-of-birth-example)
+* effectiveDateTime = "2026-04-01T10:00:00+05:00"
+* performer = Reference(practitioner-003)
+
+* code.coding[socioeconomicType] = $sct#105421008 "Educational achievement"
+* valueCodeableConcept = education-cs#regis0005.00004 "Secondary"

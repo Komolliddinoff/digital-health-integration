@@ -1,5 +1,5 @@
 Profile: EncounterOfDeath
-Parent: Encounter
+Parent: UZCoreEncounter
 Id: encounter-of-death
 Title: "Encounter of Death"
 Description: "Encounter profile representing a death encounter, used to capture information about the circumstances of a patient's death."
@@ -8,19 +8,19 @@ Description: "Encounter profile representing a death encounter, used to capture 
 * ^publisher = "Uzinfocom"
 
 * status MS
-* status ^short = "The initial or final state of death. For example, initial or final"
-* status from http://hl7.org/fhir/ValueSet/encounter-status (required)
+* status = #completed
+* status ^short = "Completed death encounter"
 
 * class MS
 * class ^short = "Classification of patient encounters"
-* class from http://terminology.hl7.org/ValueSet/encounter-class (required)
+
 
 * serviceType MS
 * serviceType from DeathEncounterTypeVS
 
 * subject MS
 * subject only Reference(UZCorePatient)
-* subject ^short = "Classification of patient encounters"
+* subject ^short = "Patient whose death is being documented"
 
 * participant MS
 * participant ^short = "Death certifying physician"
@@ -34,7 +34,6 @@ Description: "Encounter profile representing a death encounter, used to capture 
 
 * participant.type MS
 * participant.type ^short = "Role of participant in encounter"
-* participant.type from http://hl7.org/fhir/ValueSet/encounter-participant-type
 
 * serviceProvider MS
 * serviceProvider ^short = "Health facility issuing certificate"
@@ -58,11 +57,11 @@ Description: "Example instance of EncounterOfDeath profile"
 Usage: #example
 
 * status = #completed 
-* class = http://terminology.hl7.org/CodeSystem/v3-ActCode#EMER
-* serviceType = DeathEncounterTypeCS#mserv_0001_00006 "Forensic medical examination"
-* subject = Reference(patient-death-example)
+* class = $v3-ActCode#EMER
+* serviceType = DeathEncounterTypeCS#mserv-0001-00006 "Forensic medical examination"
+* subject = Reference(deceased-patient-example)
 
-* participant[0].type = http://terminology.hl7.org/CodeSystem/v3-ParticipationType#ATND
+* participant[0].type = $v3-ParticipationType#ATND
 * participant[0].actor = Reference(practitionerrole-001)
 * participant[0].period.start = "2024-03-15T08:00:00Z"
 * participant[0].period.end = "2024-03-15T10:00:00Z"

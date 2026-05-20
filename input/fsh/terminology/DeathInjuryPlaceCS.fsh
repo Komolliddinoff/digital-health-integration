@@ -1,9 +1,9 @@
-CodeSystem: DeathEvidenceTypeCS
-Id: death-evidence-type-cs
-Title: "Death Evidence Type CodeSystem"
-Description: "Collection of information on the type of evidence used in the context of healthcare and medical documentation."
+CodeSystem: DeathInjuryPlaceCS
+Id: death-injury-place-cs
+Title: "Death Injury Place CodeSystem"
+Description: "Collection of codes representing places of injury related to death cases."
 
-* insert OriginalCodeSystemDraft(death-evidence-type-cs)
+* insert OriginalCodeSystemDraft(death-injury-place-cs)
 
 * #death0002_00001 "Maishiy"
   * ^designation[+].language = #ru

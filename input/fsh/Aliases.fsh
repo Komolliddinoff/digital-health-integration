@@ -78,8 +78,7 @@ Alias: $v3-RoleCode = http://terminology.hl7.org/CodeSystem/v3-RoleCode
 Alias: $v3ActPriority = http://terminology.hl7.org/CodeSystem/v3-ActPriority
 
 // ===================== IDENTIFIERS (UZ) =====================
-Alias: $birthcertificate = https://adliya.uz/identifier/birthcertificate
-Alias: $passport-international = https://dpm.uz/identifier/passport-international
+Alias: $birthcertificate =  https://dhp.uz/fhir/core/sid/pid/uz/bct
 Alias: $passport-local = https://dpm.uz/identifier/passport-local
 Alias: $nationaluniqueID = https://dpm.uz/identifier/national-unique-id
 Alias: $driverslicense = https://gov.uz/iiv/identifier/driverslicense
@@ -97,7 +96,7 @@ Alias: $organization-type-vs = http://hl7.org/fhir/ValueSet/organization-type
 // ===================== UZ CORE =====================
 Alias: $general-condition = https://dhp.uz/fhir/core/StructureDefinition/uz-core-condition
 Alias: $socieeconomic-observation = https://dhp.uz/fhir/core/StructureDefinition/uz-core-socioeconomic-observation
-
+Alias:  $education-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/education-cs
 Alias: $organizational-service-group = https://dhp.uz/fhir/core/CodeSystem/organizational-service-group
 Alias: $organizational-structure = https://dhp.uz/fhir/core/CodeSystem/organizational-structure
 Alias: $nomenclature-group = https://dhp.uz/fhir/core/CodeSystem/nomenclature-group
@@ -124,3 +123,4 @@ Alias: $valueset-supplement = http://hl7.org/fhir/StructureDefinition/valueset-s
 Alias: $drs = http://hl7.org/fhir/document-reference-status
 Alias: $drcs = http://hl7.org/fhir/composition-status
 Alias: $drca = http://hl7.org/fhir/composition-attestation-mode
+

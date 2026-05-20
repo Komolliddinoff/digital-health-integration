@@ -19,13 +19,13 @@ Description: "Uzbek and Russian designations for selected SNOMED cause of death 
 
 * #27935005 "Suicide"
   * ^designation[0].language = #ru
-  * ^designation[=].value = "Убийство"
+  * ^designation[=].value = "Самоубийство"
   * ^designation[+].language = #uz
-  * ^designation[=].value = "Qotillik"
+  * ^designation[=].value = "O'z joniga qasd qilish"
 
 * #44301001 "Homicide"
   * ^designation[0].language = #ru
-  * ^designation[=].value = "Самоубийство"
+  * ^designation[=].value = "Убийство"
   * ^designation[+].language = #uz
   * ^designation[=].value = "O'z o'zini o'ldirish"
 
@@ -35,8 +35,8 @@ Description: "Uzbek and Russian designations for selected SNOMED cause of death 
   * ^designation[+].language = #uz
   * ^designation[=].value = "O'lim sababi aniqlanmadi"
 
-* #371128008 "Patient awaiting investigation"
+* #371128008 "Occupational injury"
   * ^designation[0].language = #ru
-  * ^designation[=].value = "Несчастный случай на производстве"
+  * ^designation[=].value = "Производственная травма"
   * ^designation[+].language = #uz
-  * ^designation[=].value = "Ish faoliyati tufayli baxtsiz hodisa"
+  * ^designation[=].value = "Ish joyida jarohatlanish"

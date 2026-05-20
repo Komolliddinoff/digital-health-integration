@@ -1,32 +1,3 @@
-Extension: PatientPlaceOfBirthType
-Id: patient-placeOfBirthType
-Title: "Place of Birth Type"
-Description: "Extension to indicate the type of place where the patient was born (e.g. home, hospital, other)."
-
-* ^url = "https://dhp.uz/fhir/integrations/StructureDefinition/patient-placeOfBirthType"
-* ^status = #active
-* ^context.type = #element
-* ^experimental = true
-* ^context.expression = "Patient"
-
-* value[x] only CodeableConcept
-* valueCodeableConcept from BirthPlaceVS (required)
-* valueCodeableConcept ^short = "Type of the place where the patient was born"
-
-Extension: RelatedPersonEducation
-Id: relatedperson-education
-Title: "Related Person Education"
-Description: "Extension to indicate the education level of the related person."
-* ^url = "https://dhp.uz/fhir/integrations/StructureDefinition/relatedperson-education"
-* ^status = #draft
-* ^context.type = #element
-* ^experimental = true
-* ^context.expression = "RelatedPerson"
-
-* value[x] only CodeableConcept
-* valueCodeableConcept from https://terminology.dhp.uz/fhir/core/ValueSet/education-vs (required)
-* valueCodeableConcept ^short = "Education level of the related person"
-
 Extension: GenderOtherUZ
 Id: gender-other
 Title: "Differentiation of the administrative gender 'other'"
@@ -64,40 +35,6 @@ Description: "Date when the patient was attached to the managing organization. I
 
 * value[x] 1..1
 * value[x] only date
-
-
-Extension: MultipleBirthFlag
-Id: multiple-birth-flag
-Title: "Multiple Birth Flag"
-Description: "Indicates whether more than one newborn was delivered."
-
-* ^url = "https://dhp.uz/fhir/integrations/StructureDefinition/multiple-birth-flag"
-* ^experimental = true
-
-//change context
-* ^context.type = #element
-* ^context.expression = "Patient"
-
-* value[x] 1..1 MS
-* value[x] only boolean
-* valueBoolean ^short = "True if multiple babies were born"
-
-
-Extension: NewbornBirthTime
-Id: newborn-birth-time
-Title: "Newborn Birth Time"
-Description: "Birth time of each newborn in a multiple birth."
-
-* ^url = "https://dhp.uz/fhir/integrations/StructureDefinition/newborn-birth-time"
-* ^experimental = true
-
-
-* ^context.type = #element
-* ^context.expression = "Patient"
-
-* value[x] 1..1 MS
-* value[x] only dateTime
-* valueDateTime ^short = "Exact birth time of the newborn"
 
 
 
