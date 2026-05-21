@@ -1,5 +1,5 @@
 Profile: PatientDhis
-Parent: Patient
+Parent: UZCorePatient
 Id: dhis-patient
 Title: "Dhis Patient Profile"
 Description: "Profile for patient resource"
@@ -7,73 +7,9 @@ Description: "Profile for patient resource"
 * ^status = #active
 * ^publisher = "Uzinfocom"
 
-* identifier 1..* MS SU
-  * extension contains http://hl7.org/fhir/StructureDefinition/data-absent-reason named data-absent-reason 0..1 MS
-* identifier.use from http://hl7.org/fhir/ValueSet/identifier-use (required)
-* identifier.type from http://hl7.org/fhir/ValueSet/identifier-type (required)
-
-* identifier ^slicing.discriminator.type = #value
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #open
-* identifier ^slicing.description = "Ways patient can be identitifed"
-* identifier ^slicing.ordered = false
-
-* identifier contains nationalId 1..1 MS
-* identifier[nationalId]
-  * type.coding 1..* MS
-    * system 1..1 MS
-    * system = "http://terminology.hl7.org/CodeSystem/v2-0203"
-    * code 1..1 MS
-    * code = #NI
-    * display 1..1 MS
-    * display = "National unique individual identifier"
-  * system 1..1 MS
-  * system = "https://dhp.uz/fhir/core/sid/pid/uz/ni"
-  * value 1..1 MS
-
-* active 0..1 MS
-* active ^isModifier = true
-
-* name 0..* MS
-  * use 0..1 MS
-  * use from NameUseVS (required)
-  * text 0..1 MS
-  * family 0..1 MS
-  * given 0..* MS
-  * suffix 0..* MS
-  * period 0..1 MS
-
-* gender 0..1 MS
-* gender from http://hl7.org/fhir/ValueSet/administrative-gender (required)
-
-* birthDate 0..1 MS
-* deceased[x] only boolean or dateTime
-* deceased[x] MS
-
-* address 0..* MS
-* address ^slicing.discriminator.type = #value
-* address ^slicing.discriminator.path = "country"
-* address ^slicing.rules = #open
-
-* address contains uzAddress 0..* MS
-* address[uzAddress]
-  * use = #temp
-  * use ^isModifier = true
-  * type = #physical
-  * text 0..1 MS
-  * line 0..* MS
-  * city 0..1 MS
-  * city from MahallaVS (required)
-  * district 0..1 MS
-  * district from RegionsVS (required)
-  * state 0..1 MS
-  * state from StateVS (required)
-  * country 1..1 MS
-  * country = "182"
-  * period 0..1 MS
 
 * managingOrganization 0..1 MS
-* managingOrganization only Reference(Organization)
+* managingOrganization only Reference(UZCoreOrganization)
 
 
 // Instance example
@@ -93,7 +29,7 @@ Usage: #example
   * family = "Deera"
   * given = "John"
 
-* gender = #other
+* gender = #unknown
 
 * birthDate = "2026-03-13"
 
@@ -104,4 +40,6 @@ Usage: #example
   * city = "104-0116"
   * district = "1726290"
   * state = "1726"
-  * country = "182"
+  * country = "UZ"
+
+* managingOrganization = Reference(example-organization)

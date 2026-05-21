@@ -8,23 +8,17 @@ Description: "Measurement and simple assertions"
 * ^publisher = "Uzinfocom"
 
 * identifier 0..* MS
-* identifier ^short = "Идентификатор для наблюдения"
-/*
-* status 1..1 MS
-* status from ObservationStatusVS
+* identifier ^short = "Identifier for the observation."
 
-* category 0..* MS
-* category from ObservationCategoryVS (required)*/
 * category = $observation-category#laboratory
 
-* code 1..1 MS
-* code from ObservationCodeVS (required)
-* code ^short = "Classification of type of observation"
+
 * subject 1..1 MS
 * subject only Reference(UZCorePatient)
+
 * value[x] only CodeableConcept
 * valueCodeableConcept 0..1 MS
-* valueCodeableConcept ^short = "Результат тестов"
+* valueCodeableConcept ^short = "Test results."
 
 * method = $sct#278289002 "Microscopy technique (qualifier value)"
 * specimen 0..1 MS
@@ -38,8 +32,6 @@ Description: "Measurement and simple assertions"
   * value[x] only CodeableConcept or dateTime or string
   * valueCodeableConcept from ObservationCodeableConceptVS
 
-* hasMember 0..* MS
-* note 0..* MS
 
 // Instance Example
 Instance: example-tb-microscopy

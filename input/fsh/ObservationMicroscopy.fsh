@@ -8,19 +8,9 @@ Description: "Measurement and simple assertions"
 * ^publisher = "Uzinfocom"
 
 * identifier 0..* MS
-* identifier ^short = "Идентификатор для наблюдения"
-/*
-* status 1..1 MS
-* status from https://www.hl7.org/fhir/valueset-observation-status.html
+* identifier ^short = "Identifier for the observation."
 
-* category 0..* MS
-* category from https://build.fhir.org/ig/vadi2/DHP-temp/uz/ValueSet-observation-category-vs.html (required)
-*/
 * category = $observation-category#laboratory
-
-* code 1..1 MS
-* code from ObservationCodeVS
-* code ^short = "Classification of type of observation"
 
 * subject 1..1 MS
 * subject only Reference(UZCorePatient)
@@ -28,8 +18,6 @@ Description: "Measurement and simple assertions"
 
 * effective[x] only dateTime
 * effectiveDateTime 1..1 MS SU
-
-* issued 0..1 MS
 
 * performer 0..1 MS
 * performer only Reference(UZCoreOrganization)
@@ -46,10 +34,6 @@ Description: "Measurement and simple assertions"
   * value[x] only CodeableConcept
   * valueCodeableConcept 1..1 MS
   * valueCodeableConcept from ObservationCodeableConceptVS
-
-* hasMember 0..* MS
-
-* note 0..* MS
 
 //Instance Example
 Instance: example-microscopy

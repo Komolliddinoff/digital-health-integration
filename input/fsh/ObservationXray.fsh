@@ -1,5 +1,5 @@
 Profile: DhisObservationXray
-Parent: Observation
+Parent: UZCoreObservation
 Id: dhis-observation-xray
 Title: "Dhis Observation Xray Profile"
 Description: "Measurement and simple assertions"
@@ -8,19 +8,8 @@ Description: "Measurement and simple assertions"
 * ^publisher = "Uzinfocom"
 
 * identifier 0..* MS
-* identifier ^short = "Идентификатор для наблюдения"
-/*
-* status 1..1 MS
-* status from http://hl7.org/fhir/ValueSet/observation-status (required)
-
-* category 0..* MS
-* category from http://hl7.org/fhir/ValueSet/observation-category (required)
-*/
+* identifier ^short = "Identifier for the observation."
 * category =  $observation-category#imaging
-
-* code 1..1 MS
-* code from ObservationCodeVS
-* code ^short = "Classification of type of observation"
 
 * subject 1..1 MS
 * subject only Reference(PatientDhis)
@@ -28,16 +17,13 @@ Description: "Measurement and simple assertions"
 * effective[x] 0..1 MS SU
 * effective[x] only dateTime
 
-* issued 0..1 MS
-
 * performer 0..* MS
-* performer only Reference(Organization)
+* performer only Reference(UZCoreOrganization)
 
 * value[x] only boolean
 * valueBoolean 0..1 MS
 * valueBoolean ^short = "Actual result"
 
-* note 0..* MS
 
 // Instance Example
 Instance: example-observation-xray
@@ -50,5 +36,5 @@ Usage: #example
 * subject = Reference(example-patient-john)
 * effectiveDateTime = "2026-03-10T10:00:00Z"
 * issued = "2026-03-12T11:00:00Z"
-* performer.reference = "Organization/example-organization"
+* performer = Reference(Organization/example-organization)
 * valueBoolean = false

@@ -17,3 +17,4 @@ Resource has a language (ru), and the XHTML has a lang (en), but they differ
 # per identifiers.md in the main DHP IG (uz.dhp.core)
 No definition could be found for URL value 'https://dhp.uz/fhir/core/sid/pid/uz/prn/200935935/%
 
+The Target Code System http://loinc.org is not fully defined and populated, and no targetScope is specified, so the target code checking will not be performed

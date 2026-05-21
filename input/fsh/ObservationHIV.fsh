@@ -1,5 +1,5 @@
 Profile: DhisObservationHIV
-Parent: Observation
+Parent: UZCoreObservation
 Id: dhis-observation-hiv
 Title: "Dhis Observation HIV Profile"
 Description: "Measurement and simple assertions"
@@ -9,26 +9,17 @@ Description: "Measurement and simple assertions"
 
 * identifier 0..* MS
 * identifier ^short = "Идентификатор для наблюдения"
-/*
-* status 1..1 MS 
-* status from http://hl7.org/fhir/ValueSet/observation-status (required)
 
-* category 0..* MS
-* category from http://hl7.org/fhir/ValueSet/observation-category (required)
-*/
 * category = $observation-category#laboratory
 
-* code 1..1 MS
-* code from ObservationCodeVS
 * subject 1..1 MS
 * subject only Reference(PatientDhis)
 * effective[x] only dateTime
 * effectiveDateTime 1..1 MS SU
 
-* issued 0..1 MS
 
 * performer 0..* MS
-* performer only Reference(Organization)
+* performer only Reference(UZCoreOrganization)
 
 * value[x] only boolean
 * valueBoolean 0..1 MS
@@ -38,9 +29,7 @@ Description: "Measurement and simple assertions"
   * code 1..1 MS
   * code from ObservationComponentCodeVS (required)
   * value[x] only boolean
-  * valueBoolean 0..1 MS
-
-* note 0..* MS      
+  * valueBoolean 0..1 MS     
 
 //Instance Example
 Instance: example-obs-hiv
@@ -53,7 +42,7 @@ Usage: #example
 * subject = Reference(example-patient-john)
 * effectiveDateTime = "2026-03-10T10:00:00Z"
 * issued = "2026-03-15T11:00:00Z"
-* performer.reference = "Organization/example-organization"
+* performer = Reference(Organization/example-organization)
 * valueBoolean = true
 * component[0]
   * code = https://terminology.dhp.uz/CodeSystem/observation-component-code-cs#Tub004-0005 "AMK/KAN/CAP result"
