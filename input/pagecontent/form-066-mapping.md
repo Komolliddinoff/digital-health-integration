@@ -175,8 +175,6 @@ Causes of death are tagged the same way (`Condition.category`, [Diagnosis Role](
 
 ### Temporary Disability
 
-The two dates are the bounds of `Observation.effectivePeriod` - Дата открытия → `effectivePeriod.start`, Дата закрытия → `effectivePeriod.end`. The observation's LOINC code identifies it as a sick-leave record, so the period bounds need no further tagging.
-
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
 | Ochilgan sana | Дата открытия | Observation.effectivePeriod.start | LOINC `105583-9` "Worker Sick leave form" | 2026-01-05 |
