@@ -175,7 +175,7 @@ Causes of death are tagged the same way (`Condition.category`, [Diagnosis Role](
 
 | UZ | RU | FHIR Path | Code | Example |
 |----|----|------------|------|---------|
-| Davolovchi shifokor | Лечащий врач | Local code.practitioner | Local code | Rasulov B.B. |
+| Davolovchi shifokor | Лечащий врач | PractitionerRole.practitioner | Local code | Rasulov B.B. |
 | Bo'lim boshlig'i | Заведующий отделением | [PractitionerRole](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner-role.html).practitioner | Local code | Qodirova M.M. |
 | Katta hamshira | Старшая медсестра | PractitionerRole.practitioner | Local code | Karimova D.D. |
 
