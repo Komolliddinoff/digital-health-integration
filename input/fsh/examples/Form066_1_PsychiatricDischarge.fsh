@@ -147,6 +147,9 @@ Description: "Example of a psychiatric/narcological hospital discharge statistic
 * entry[+].fullUrl = "urn:uuid:06600051-1111-2222-3333-444444444444"
 * entry[=].resource = observation-temporary-disability-period-066-1
 
+* entry[+].fullUrl = "urn:uuid:06600025-1111-2222-3333-444444444444"
+* entry[=].resource = observation-previous-hospitalizations-066-1
+
 
 Instance: composition-066-1-001
 InstanceOf: Form066_1_PsychiatricDischargeComposition
@@ -195,6 +198,7 @@ Usage: #inline
 * section[=].entry[+] = Reference(urn:uuid:06600044-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:06600045-1111-2222-3333-444444444444)
 * section[=].entry[+] = Reference(urn:uuid:06600038-1111-2222-3333-444444444444)
+* section[=].entry[+] = Reference(urn:uuid:06600025-1111-2222-3333-444444444444)
 
 * section[hospitalizationInformation].title = "Hospitalization Information"
 * section[=].code = $loinc#8648-8 "Hospital course note"
@@ -313,7 +317,6 @@ Usage: #inline
 * actualPeriod.start = "2026-01-05T10:00:00+05:00"
 * actualPeriod.end = "2026-01-15T14:00:00+05:00"
 * serviceProvider = Reference(urn:uuid:06600004-1111-2222-3333-444444444444)
-* extension[EncounterAdmissionCount].valueInteger = 5
 * basedOn = Reference(urn:uuid:06600013-1111-2222-3333-444444444444)
 * admission.origin.extension[admissionOrigin].valueCodeableConcept = admit-source-home-cs#mserv-0003-00001 "From home"
 * admission.origin.display = "From home"
@@ -468,6 +471,18 @@ Usage: #inline
 * performer = Reference(urn:uuid:06600005-1111-2222-3333-444444444444)
 * effectiveDateTime = "2026-01-05T09:30:00+05:00"
 * valueDateTime = "2026-01-05T09:30:00+05:00"
+
+Instance: observation-previous-hospitalizations-066-1
+InstanceOf: UZCoreObservation
+Usage: #inline
+* language = #en
+* status = #final
+* code = $local-observation-code#num-previous-hospitalizations "Number of previous hospitalizations"
+* subject = Reference(urn:uuid:06600002-1111-2222-3333-444444444444)
+* encounter = Reference(urn:uuid:06600003-1111-2222-3333-444444444444)
+* performer = Reference(urn:uuid:06600005-1111-2222-3333-444444444444)
+* effectiveDateTime = "2026-01-05T09:30:00+05:00"
+* valueInteger = 5
 
 // Observation was used because Form 066 contains emergency care information as a separate yes/no field.
 Instance: observation-emergency-care-provided-066-1

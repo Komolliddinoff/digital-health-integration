@@ -111,14 +111,6 @@ Description: "Birth time of each newborn in a multiple birth."
 
 
 // mine
-Extension: EncounterAdmissionCount
-Id: encounter-admission-count
-Title: "Encounter Admission Count"
-Description: "Number of times the patient has been admitted"
-* ^context.type = #element
-* ^context.expression = "Encounter"
-* value[x] only integer
-
 Extension: AdmissionOrigin
 Id: admission-origin
 Title: "Admission Origin"

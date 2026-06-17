@@ -238,6 +238,7 @@ Alias: $v3-ActPriority = http://terminology.hl7.org/CodeSystem/v3-ActPriority
 Alias: $v3-ParticipationType = http://terminology.hl7.org/CodeSystem/v3-ParticipationType
 Alias: $icd10 = http://hl7.org/fhir/sid/icd-10
 Alias: $diagnosis-role = https://terminology.dhp.uz/CodeSystem/diagnosis-role
+Alias: $local-observation-code = https://terminology.dhp.uz/CodeSystem/local-observation-code
 Alias: $education-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/education-cs
 Alias: $occupation-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/position-and-profession-cs
 Alias: $benefit-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/benefits-cs
