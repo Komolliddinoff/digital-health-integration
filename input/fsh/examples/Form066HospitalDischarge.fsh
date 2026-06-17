@@ -97,6 +97,8 @@ Description: "Example of Form 066 hospital discharge statistical card"
 * entry[=].resource = observation-tb-drug-sensitivity-066
 * entry[+].fullUrl = "urn:uuid:06600048-1111-2222-3333-444444444444"
 * entry[=].resource = observation-temporary-disability-period-066
+* entry[+].fullUrl = "urn:uuid:06600023-1111-2222-3333-444444444444"
+* entry[=].resource = location-066-001
 * entry[+].fullUrl = "urn:uuid:06600049-1111-2222-3333-444444444444"
 * entry[=].resource = provenance-signature-066
 
@@ -309,10 +311,21 @@ Usage: #inline
 * admission.dischargeDisposition = $discharge-disposition-home-cs#mserv-0004-00001 "Hospitalized"
 * subjectStatus = $encounter-local-subject-status-cs#loc-cs-001 "Recovered"
 * length = 10 'd' "days"
+* location[0].form = $location-form#101 "Therapy"
+* location[0].period.start = "2026-01-05T10:00:00+05:00"
+* location[0].period.end = "2026-01-15T14:00:00+05:00"
+* location[0].location = Reference(urn:uuid:06600023-1111-2222-3333-444444444444)
 * participant[0].actor = Reference(urn:uuid:06600008-1111-2222-3333-444444444444)
 * participant[+].actor = Reference(urn:uuid:06600009-1111-2222-3333-444444444444)
 * participant[+].actor = Reference(urn:uuid:06600010-1111-2222-3333-444444444444)
 * priority = $v3ActPriority#EM "Emergency"
+
+Instance: location-066-001
+InstanceOf: Location
+Usage: #inline
+* status = #active
+* name = "Therapeutic department"
+* mode = #instance
 
 
 Instance: practitioner-066-001

@@ -87,7 +87,7 @@ For a complete reference instance, see the [Form 066 hospital discharge example]
 |----|----|------------|------|---------|
 | Qabul bo'limi tashxisi | Диагноз при поступлении | Condition.code | ICD-10 | J18.9 |
 | Yotqizilgan sanasi va vaqti | Дата и время госпитализации | Encounter.actualPeriod.start | - | 2026-01-05T10:00:00+05:00 |
-| O'rin joy turi | Тип койки | Encounter.class | v3-ActCode | IMP |
+| O'rin joy turi | Тип койки | Encounter.location.form | Local code | Therapy |
 | Chiqarilgan sanasi va vaqti | Дата и время выписки | Encounter.actualPeriod.end | - | 2026-01-15T14:00:00+05:00 |
 | Jami o'rin kunlar | Койко-дни | Observation.valueQuantity / Encounter.length | LOINC `78033-8` "Hospital stay duration" | 10 days |
 | Shundan, reanimatsiyada | Из них, в реанимации | Observation.valueQuantity | LOINC `LP76050-1` "Intensive care unit" | 0 days |
