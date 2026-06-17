@@ -813,12 +813,6 @@ Usage: #inline
 * performer = Reference(urn:uuid:06600005-1111-2222-3333-444444444444)
 * effectivePeriod.start = "2026-01-05T10:00:00+05:00"
 * effectivePeriod.end = "2026-01-15T14:00:00+05:00"
-* component[0].code.coding = $discharge-card-slot#disability-period-start
-* component[0].code.text = "Disability start date"
-* component[0].valueDateTime = "2026-01-05T10:00:00+05:00"
-* component[1].code.coding = $discharge-card-slot#disability-period-end
-* component[1].code.text = "Disability end date"
-* component[1].valueDateTime = "2026-01-15T14:00:00+05:00"
 
 
 
