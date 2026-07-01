@@ -4,7 +4,7 @@ on:
   push:
     branches: [ main ]
   pull_request:
-    types: [opened, synchronize] # This will trigger the workflow only when a PR is opened or updated with new commits
+    types: [opened, synchronize, reopened, ready_for_review] # rebuild on open, new commits, reopen, and ready-for-review
 
 jobs:
   sushi:
