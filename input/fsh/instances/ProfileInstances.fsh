@@ -182,7 +182,7 @@ Description: "Example birth document composition for a newborn in Uzbekistan"
 
 * subject = Reference(patient-of-birth-example)
 
-* author[0] = Reference(practitionerrole-001)
+* author[0] = Reference(practitionerrole-birth-001)
 
 * custodian = Reference(organization-birth-hospital-example)
 
