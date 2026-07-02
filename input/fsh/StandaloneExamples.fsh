@@ -40,15 +40,6 @@ Description: "Example organization representing a tuberculosis treatment facilit
 * name = "Respublika onkologiya markazi"
 
 
-Instance: example-practitioner
-InstanceOf: UZCorePractitioner
-Usage: #example
-Title: "Example Practitioner"
-Description: "Example practitioner representing a clinician involved in tuberculosis care."
-
-* name[0].family = "Karimov"
-* name[0].given[0] = "Ali"
-
 Instance: practitionerrole-001
 InstanceOf: UZCorePractitionerRole
 Usage: #example
