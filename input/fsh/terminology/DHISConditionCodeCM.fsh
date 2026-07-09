@@ -1,15 +1,15 @@
-Instance: tuberculosis-to-snomed
+Instance: dhis-tuberculosis-to-snomed
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "Tuberculosis Diagnoses to SNOMED CT"
 Description: "Maps the local DHIS tuberculosis diagnosis and comorbidity codes to SNOMED CT. Where the relationship is `equivalent`, use the SNOMED CT code directly in resources (see the DHIS Condition Code ValueSet); the remaining codes have only a broader, narrower or related SNOMED CT concept and keep their local code."
-* url = "https://dhp.uz/fhir/integrations/ConceptMap/tuberculosis-to-snomed"
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dhis-tuberculosis-to-snomed"
 * name = "TuberculosisToSnomed"
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
 
-* group.source = Canonical(ConditionCodeCS)
+* group.source = Canonical(DHISConditionCodeCS)
 * group.target = $sct
 * targetScopeCanonical = $sct-vs
 

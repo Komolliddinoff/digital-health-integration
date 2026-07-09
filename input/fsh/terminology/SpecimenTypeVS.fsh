@@ -2,7 +2,7 @@ ValueSet: SpecimenTypeVS
 Id: specimen-type-vs
 Title: "DHIS Specimen Type ValueSet"
 Description: "Value set of tuberculosis specimen type codes used by the DHIS information system. Specimen types with an exact SNOMED CT equivalent are expressed as SNOMED CT codes; the remaining concepts (site groupings, culture media and processing states) use local codes that have no 1:1 SNOMED CT match."
-* ^url = "https://terminology.dhp.uz/ValueSet/specimen-type-vs"
+* insert IntegrationsValueSet(specimen-type-vs)
 * ^experimental = true
 
 * include specimen-type-cs#Spec001-0001

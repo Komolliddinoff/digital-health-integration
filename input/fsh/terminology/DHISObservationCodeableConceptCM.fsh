@@ -1,15 +1,15 @@
-Instance: observation-result-to-snomed
+Instance: dhis-observation-result-to-snomed
 InstanceOf: ConceptMap
 Usage: #definition
 Title: "Tuberculosis Test Results to SNOMED CT"
 Description: "Maps the local DHIS coded test-result codes that have an exact SNOMED CT concept - the identified mycobacterial species and the trace and identification qualifiers - to SNOMED CT. Use the SNOMED CT code directly in resources (see the DHIS Observation Result ValueSet); smear/culture grades, processing states and resistance-band outcomes have no exact SNOMED CT concept and keep their local code."
-* url = "https://dhp.uz/fhir/integrations/ConceptMap/observation-result-to-snomed"
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/dhis-observation-result-to-snomed"
 * name = "ObservationResultToSnomed"
 * status = #draft
 * experimental = false
 * publisher = "Uzinfocom"
 
-* group.source = Canonical(ObservationCodeableConceptCS)
+* group.source = Canonical( DHISObservationCodeableConceptCS)
 * group.target = $sct
 * targetScopeCanonical = $sct-vs
 

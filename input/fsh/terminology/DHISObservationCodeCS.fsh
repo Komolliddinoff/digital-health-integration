@@ -1,9 +1,9 @@
-CodeSystem: ObservationCodeCS
-Id: observation-dhis-code-cs
+CodeSystem: DHISObservationCodeCS
+Id: dhis-observation-code-cs
 Title: "DHIS Observation Code CodeSystem"
 Description: "Local code system of tuberculosis diagnostic tests and investigations used by the DHIS information system, with Russian and English designations. The DHIS Observation Code to LOINC ConceptMap records the LOINC concept for every code; in resources use the LOINC code directly wherever an exact match exists (see the DHIS Observation Code ValueSet), keeping a local code only where no exact LOINC match exists."
 
-* insert OriginalCodeSystemDraft(observation-dhis-code-cs)
+* insert OriginalCodeSystemDraft(dhis-observation-code-cs)
 
 * #Tub002-0001 "Balg'am surtmasi, FL"
   * ^designation[0].language = #ru

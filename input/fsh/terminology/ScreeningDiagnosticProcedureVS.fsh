@@ -2,7 +2,7 @@ ValueSet: ScreeningDiagnosticProcedureVS
 Id: screening-diagnostic-procedure-vs
 Title: "Diagnostic Procedures ValueSet"
 Description: "Value set of SNOMED CT codes for diagnostic referrals and reports."
-* ^url = "https://dhp.uz/fhir/integrations/ValueSet/screening-diagnostic-procedure-vs"
+* insert IntegrationsValueSet(screening-diagnostic-procedure-vs)
 * ^experimental = true
 
 * $sct#47079000 "Ultrasound of breast"

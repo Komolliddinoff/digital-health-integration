@@ -2,7 +2,7 @@ ValueSet: ScreeningServiceRequestCodesVS
 Id: screening-service-request-codes-vs
 Title: "Screening Service Request Codes ValueSet"
 Description: "Combined code set for screening service requests (LOINC laboratory tests and SNOMED diagnostic procedures)"
-* ^url = "https://dhp.uz/fhir/integrations/ValueSet/screening-service-request-codes-vs"
+* insert IntegrationsValueSet(screening-service-request-codes-vs)
 * ^status = #active
 * ^experimental = false
 

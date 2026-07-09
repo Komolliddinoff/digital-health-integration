@@ -3,7 +3,7 @@ InstanceOf: ConceptMap
 Usage: #definition
 Title: "Colposcopy Results to SNOMED CT"
 Description: "Maps local UZ screening colposcopy result codes to SNOMED CT."
-* url = "https://terminology.dhp.uz/ConceptMap/screening-colposcopy-to-snomed"
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/screening-colposcopy-to-snomed"
 * name = "ScreeningColposcopyToSnomed"
 * status = #draft
 * experimental = false

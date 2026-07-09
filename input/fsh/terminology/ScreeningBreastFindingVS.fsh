@@ -2,7 +2,7 @@ ValueSet: ScreeningBreastFindingVS
 Id: screening-breast-finding-vs
 Title: "Breast Mammography Findings ValueSet"
 Description: "Value set of codes for recording breast findings. Uses SNOMED CT where an equivalent concept exists, plus a local code for macrocalcifications (no equivalent SNOMED concept)."
-* ^url = "https://dhp.uz/fhir/integrations/ValueSet/screening-breast-finding-vs"
+* insert IntegrationsValueSet(screening-breast-finding-vs)
 * ^experimental = true
 
 * $sct#129797000 "Mammographic skin thickening of breast"

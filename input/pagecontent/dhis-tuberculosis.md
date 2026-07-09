@@ -39,14 +39,14 @@ Example: [example-tbc-diagnosis](Condition-example-tbc-diagnosis.html)
 
 | Information to record | Value set | Example code | Stored in |
 | :--- | :--- | :--- | :--- |
-| Diagnosis | [ConditionCodeVS](ValueSet-condition-code-vs.html) | `SNOMED CT#88356006` (Primary tuberculous complex) | `Condition.code` |
+| Diagnosis | [DHISConditionCodeVS](ValueSet-dhis-condition-code-vs.html) | `SNOMED CT#88356006` (Primary tuberculous complex) | `Condition.code` |
 | Clinical status | [condition-clinical](https://dhp.uz/fhir/core/CodeSystem-clinical-status-cs.html) | `condition-clinical#active` (Active) | `clinicalStatus` |
 | Verification status | [condition-ver-status](https://dhp.uz/fhir/core/CodeSystem-condition-verification-status-cs.html) | `condition-ver-status#confirmed` (Confirmed) | `verificationStatus` |
 | Category | [condition-category](http://terminology.hl7.org/CodeSystem/condition-category) | `condition-category#encounter-diagnosis` (Encounter Diagnosis) | `category` |
 | When it started | - | `2025-06-03` | `onsetDateTime` |
 | Subject | - | reference to [Patient](#registering-a-patient-patient) | `subject` |
 
-Use the SNOMED CT code wherever an exact match exists; only the few diagnoses without a 1:1 SNOMED CT match (e.g. fibro-cavitary TB and the non-TB comorbidities) keep a local code. The [tuberculosis-to-snomed](ConceptMap-tuberculosis-to-snomed.html) ConceptMap maps every DHIS diagnosis code to its SNOMED CT concept, so an integrator can find the standard code for any local code they hold.
+Use the SNOMED CT code wherever an exact match exists; only the few diagnoses without a 1:1 SNOMED CT match (e.g. fibro-cavitary TB and the non-TB comorbidities) keep a local code. The [dhis-tuberculosis-to-snomed](ConceptMap-dhis-tuberculosis-to-snomed.html) ConceptMap maps every DHIS diagnosis code to its SNOMED CT concept, so an integrator can find the standard code for any local code they hold.
 
 ### Grouping the treatment course (EpisodeOfCare)
 
@@ -85,10 +85,10 @@ Use the SNOMED CT code wherever an exact match exists; only the site groupings a
 
 ### Recording diagnostic test results (Observation)
 
-Every laboratory or imaging result is its own Observation. In all four profiles below, `Observation.code` identifies the test, drawn from [ObservationCodeVS](ValueSet-observation-code-vs.html) - LOINC where an exact code exists, otherwise a local code for culture-medium and assay variants. The [observation-tuberculosis-code](ConceptMap-observation-tuberculosis-code.html) ConceptMap maps every DHIS test code to its LOINC concept. What differs is how the result is carried:
+Every laboratory or imaging result is its own Observation. In all four profiles below, `Observation.code` identifies the test, drawn from [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) - LOINC where an exact code exists, otherwise a local code for culture-medium and assay variants. The [observation-tuberculosis-code](ConceptMap-dhis-observation-tuberculosis-code.html) ConceptMap maps every DHIS test code to its LOINC concept. What differs is how the result is carried:
 
-- coded results use [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) (SNOMED CT for identified species, local codes for smear/culture grades, plus HL7 interpretation codes such as `POS`/`NEG`),
-- result components (for example, one row per drug in a susceptibility panel) are labelled with [ObservationComponentCodeVS](ValueSet-observation-component-code-vs.html),
+- coded results use [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) (SNOMED CT for identified species, local codes for smear/culture grades, plus HL7 interpretation codes such as `POS`/`NEG`),
+- result components (for example, one row per drug in a susceptibility panel) are labelled with [DHISObservationComponentCodeVS](ValueSet-dhis-observation-component-code-vs.html),
 - yes/no findings use a boolean.
 
 Choose the profile that matches the test:
@@ -110,9 +110,9 @@ Example: [example-microscopy](Observation-example-microscopy.html)
 
 | Information to record | Value set | Example code | Stored in |
 | :--- | :--- | :--- | :--- |
-| Test code | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `LOINC#53904-9` (Sputum smear microscopy, fluorescent) | `Observation.code` |
-| What the component reports | [ObservationComponentCodeVS](ValueSet-observation-component-code-vs.html) | `observation-component-code-cs#Tub004-0032` (Grading) | `component.code` |
-| AFB grade | [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) | `observation-codeable-concept-cs#Tub003-0008` (3+ / 40 fields) | `component.valueCodeableConcept` |
+| Test code | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `LOINC#53904-9` (Sputum smear microscopy, fluorescent) | `Observation.code` |
+| What the component reports | [DHISObservationComponentCodeVS](ValueSet-dhis-observation-component-code-vs.html) | `observation-component-code-cs#Tub004-0032` (Grading) | `component.code` |
+| AFB grade | [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) | `dhis-observation-codeable-concept-cs#Tub003-0008` (3+ / 40 fields) | `component.valueCodeableConcept` |
 | Specimen tested | - | reference to [DHISSpecimen](#collecting-a-specimen-specimen) | `specimen` |
 
 #### Culture, identification and drug-susceptibility testing
@@ -125,15 +125,15 @@ Example: [example-tb-microscopy](Observation-example-tb-microscopy.html)
 
 | Information to record | Value set | Example code | Stored in |
 | :--- | :--- | :--- | :--- |
-| Test code | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `observation-dhis-code-cs#Tub002-0007` (Phenotypic DST on MGIT) | `Observation.code` |
-| Overall result | [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) | `SNOMED CT#113858008` (M. tuberculosis complex) | `valueCodeableConcept` |
-| Drug tested (DST) | [ObservationComponentCodeVS](ValueSet-observation-component-code-vs.html) | `observation-component-code-cs#Tub004-0008` (Isoniazid 0.1 mg/mL) | `component.code` |
-| Susceptibility outcome | [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) | `v3-ObservationInterpretation#R` (Resistant) | `component.valueCodeableConcept` |
+| Test code | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `observation-dhis-code-cs#Tub002-0007` (Phenotypic DST on MGIT) | `Observation.code` |
+| Overall result | [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) | `SNOMED CT#113858008` (M. tuberculosis complex) | `valueCodeableConcept` |
+| Drug tested (DST) | [DHISObservationComponentCodeVS](ValueSet-dhis-observation-component-code-vs.html) | `observation-component-code-cs#Tub004-0008` (Isoniazid 0.1 mg/mL) | `component.code` |
+| Susceptibility outcome | [ObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) | `v3-ObservationInterpretation#R` (Resistant) | `component.valueCodeableConcept` |
 | Specimen tested | - | reference to [DHISSpecimen](#collecting-a-specimen-specimen) | `specimen` |
 
-Identified species and the trace and identification qualifiers use their SNOMED CT code directly; the [observation-result-to-snomed](ConceptMap-observation-result-to-snomed.html) ConceptMap records the DHIS result code each one replaces, while smear/culture grades and resistance-band outcomes without a standard equivalent keep a local code.
+Identified species and the trace and identification qualifiers use their SNOMED CT code directly; the [observation-result-to-snomed](ConceptMap-dhis-observation-result-to-snomed.html) ConceptMap records the DHIS result code each one replaces, while smear/culture grades and resistance-band outcomes without a standard equivalent keep a local code.
 
-For DST components, plain drug-name agents use the LOINC `<drug> [Susceptibility]` code directly; concentration-bearing agents keep a local code (the critical concentration a standard code drops). The [observation-component-to-loinc](ConceptMap-observation-component-to-loinc.html) ConceptMap maps every DHIS drug agent to its LOINC concept.
+For DST components, plain drug-name agents use the LOINC `<drug> [Susceptibility]` code directly; concentration-bearing agents keep a local code (the critical concentration a standard code drops). The [observation-component-to-loinc](ConceptMap-dhis-observation-component-to-loinc.html) ConceptMap maps every DHIS drug agent to its LOINC concept.
 
 #### Chest X-ray
 
@@ -145,7 +145,7 @@ Example: [example-observation-xray](Observation-example-observation-xray.html)
 
 | Information to record | Value set | Example code | Stored in |
 | :--- | :--- | :--- | :--- |
-| Test code | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `LOINC#30745-4` (Chest X-ray) | `Observation.code` |
+| Test code | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `LOINC#30745-4` (Chest X-ray) | `Observation.code` |
 | Finding present | - | `false` | `Observation.value` (boolean) |
 
 #### HIV test
@@ -158,7 +158,7 @@ Example: [example-obs-hiv](Observation-example-obs-hiv.html)
 
 | Information to record | Value set | Example code | Stored in |
 | :--- | :--- | :--- | :--- |
-| Test code | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `LOINC#56888-1` (HIV testing) | `Observation.code` |
+| Test code | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `LOINC#56888-1` (HIV testing) | `Observation.code` |
 | Result | - | `true` | `Observation.value` (boolean) |
 
 ### Documenting the inpatient stay (Encounter)

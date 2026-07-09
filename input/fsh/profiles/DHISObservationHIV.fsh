@@ -27,7 +27,7 @@ Description: "Profile for recording the result of an HIV test performed as part 
 
 * component 0..* MS
   * code 1..1 MS
-  * code from ObservationComponentCodeVS (required)
+  * code from DHISObservationComponentCodeVS (required)
   * value[x] only boolean
   * valueBoolean 0..1 MS     
 
@@ -45,5 +45,5 @@ Usage: #example
 * performer = Reference(Organization/example-organization)
 * valueBoolean = true
 * component[0]
-  * code = https://terminology.dhp.uz/CodeSystem/observation-component-code-cs#Tub004-0005 "AMK/KAN/CAP result"
+  * code = https://terminology.dhp.uz/fhir/integrations/CodeSystem/dhis-observation-component-code-cs#tub004-0005 "AMK/KAN/CAP result"
   * valueBoolean = true

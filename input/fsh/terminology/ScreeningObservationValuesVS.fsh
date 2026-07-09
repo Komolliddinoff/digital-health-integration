@@ -2,7 +2,7 @@ ValueSet: ScreeningObservationValuesVS
 Id: screening-observation-values-vs
 Title: "Screening Observation Values Composite ValueSet"
 Description: "Combined value set of screening result codes for Observation.value[x], including Cytology, HPV, Colposcopy, Transformation Zone, BI-RADS, Breast Density, and Image Quality findings"
-* ^url = "https://dhp.uz/fhir/integrations/ValueSet/screening-observation-values-vs"
+* insert IntegrationsValueSet(screening-observation-values-vs)
 * ^experimental = true
 
 // Объединяем все справочники результатов

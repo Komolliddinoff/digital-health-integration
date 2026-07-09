@@ -4,7 +4,7 @@ Usage: #definition
 Title: "Local Roles to National Practitioner Roles"
 Description: "Maps local cervical and breast cancer screening system practitioner roles to the national practitioner role classifier."
 * name = "ScreeningRolesToNational"
-* url = "https://dhp.uz/fhir/integrations/ConceptMap/screening-roles-to-national"
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/screening-roles-to-national"
 * status = #draft
 * experimental = false
 * publisher = "DHP Integration"

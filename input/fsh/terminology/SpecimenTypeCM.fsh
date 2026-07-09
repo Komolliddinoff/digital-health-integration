@@ -3,7 +3,7 @@ InstanceOf: ConceptMap
 Usage: #definition
 Title: "Tuberculosis Specimen Types to SNOMED CT"
 Description: "Maps the local DHIS specimen type codes to SNOMED CT. Where the relationship is `equivalent`, use the SNOMED CT code directly in resources (see the DHIS Specimen Type ValueSet); the remaining codes (site groupings and culture media) have only a broader or related SNOMED CT concept and keep their local code."
-* url = "https://dhp.uz/fhir/integrations/ConceptMap/specimen-type-conceptmap"
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/specimen-type-conceptmap"
 * name = "SpecimenTypesCodeToSnomed"
 * status = #draft
 * experimental = false

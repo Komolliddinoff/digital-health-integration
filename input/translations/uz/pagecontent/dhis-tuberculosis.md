@@ -41,14 +41,14 @@ Misol: [example-tbc-diagnosis](Condition-example-tbc-diagnosis.html)
 
 | Qayd etiladigan ma'lumot | Ma'lumotnoma | Misol kodi | Qayerda saqlanadi |
 | :--- | :--- | :--- | :--- |
-| Tashxis | [ConditionCodeVS](ValueSet-condition-code-vs.html) | `SNOMED CT#88356006` (Primary tuberculous complex) | `Condition.code` |
+| Tashxis | [DHISConditionCodeVS](ValueSet-dhis-condition-code-vs.html) | `SNOMED CT#88356006` (Primary tuberculous complex) | `Condition.code` |
 | Klinik holat | [condition-clinical](https://dhp.uz/fhir/core/CodeSystem-clinical-status-cs.html) | `condition-clinical#active` (Active) | `clinicalStatus` |
 | Tasdiqlash holati | [condition-ver-status](https://dhp.uz/fhir/core/CodeSystem-condition-verification-status-cs.html) | `condition-ver-status#confirmed` (Confirmed) | `verificationStatus` |
 | Toifa | [condition-category](http://terminology.hl7.org/CodeSystem/condition-category) | `condition-category#encounter-diagnosis` (Encounter Diagnosis) | `category` |
 | Qachon boshlangani | - | `2025-06-03` | `onsetDateTime` |
 | Sub'ekt | - | [Patient](#registering-a-patient-patient) ga havola | `subject` |
 
-Aniq moslik mavjud bo'lgan har qanday holatda SNOMED CT kodidan foydalaning; faqat 1:1 SNOMED CT mosligiga ega bo'lmagan bir nechta tashxis (masalan, fibro-kavernoz sil va sil bo'lmagan birga keladigan kasalliklar) lokal kodni saqlaydi. [tuberculosis-to-snomed](ConceptMap-tuberculosis-to-snomed.html) ConceptMap har bir DHIS tashxis kodini uning SNOMED CT tushunchasiga moslashtiradi, shuning uchun integrator o'zida mavjud har qanday lokal kod uchun standart kodni topa oladi.
+Aniq moslik mavjud bo'lgan har qanday holatda SNOMED CT kodidan foydalaning; faqat 1:1 SNOMED CT mosligiga ega bo'lmagan bir nechta tashxis (masalan, fibro-kavernoz sil va sil bo'lmagan birga keladigan kasalliklar) lokal kodni saqlaydi. [tuberculosis-to-snomed](ConceptMap-dhis-tuberculosis-to-snomed.html) ConceptMap har bir DHIS tashxis kodini uning SNOMED CT tushunchasiga moslashtiradi, shuning uchun integrator o'zida mavjud har qanday lokal kod uchun standart kodni topa oladi.
 
 ### Davolanish jarayonini guruhlash (EpisodeOfCare) {#grouping-the-treatment-course-episodeofcare}
 
@@ -87,10 +87,10 @@ Aniq moslik mavjud bo'lgan har qanday holatda SNOMED CT kodidan foydalaning; faq
 
 ### Diagnostik test natijalarini qayd etish (Observation) {#recording-diagnostic-test-results-observation}
 
-Har bir laboratoriya yoki tasvirlash natijasi o'zining alohida Observation hisoblanadi. Quyidagi to'rtta profilning barchasida `Observation.code` testni aniqlaydi, u [ObservationCodeVS](ValueSet-observation-code-vs.html) dan olinadi - aniq kod mavjud bo'lganda LOINC, aks holda o'stirish muhiti va tahlil variantlari uchun lokal kod. [observation-tuberculosis-code](ConceptMap-observation-tuberculosis-code.html) ConceptMap har bir DHIS test kodini uning LOINC tushunchasiga moslashtiradi. Farqi - natija qanday saqlanishida:
+Har bir laboratoriya yoki tasvirlash natijasi o'zining alohida Observation hisoblanadi. Quyidagi to'rtta profilning barchasida `Observation.code` testni aniqlaydi, u [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) dan olinadi - aniq kod mavjud bo'lganda LOINC, aks holda o'stirish muhiti va tahlil variantlari uchun lokal kod. [observation-tuberculosis-code](ConceptMap-dhis-observation-tuberculosis-code.html) ConceptMap har bir DHIS test kodini uning LOINC tushunchasiga moslashtiradi. Farqi - natija qanday saqlanishida:
 
-- kodlangan natijalar [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) dan foydalanadi (aniqlangan turlar uchun SNOMED CT, surtma/o'stirma darajalari uchun lokal kodlar, hamda `POS`/`NEG` kabi HL7 interpretatsiya kodlari),
-- natija komponentlari (masalan, sezgirlik panelida har bir dori uchun bitta qator) [ObservationComponentCodeVS](ValueSet-observation-component-code-vs.html) bilan belgilanadi,
+- kodlangan natijalar [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) dan foydalanadi (aniqlangan turlar uchun SNOMED CT, surtma/o'stirma darajalari uchun lokal kodlar, hamda `POS`/`NEG` kabi HL7 interpretatsiya kodlari),
+- natija komponentlari (masalan, sezgirlik panelida har bir dori uchun bitta qator) [DHISObservationComponentCodeVS](ValueSet-dhis-observation-component-code-vs.html) bilan belgilanadi,
 - ha/yo'q topilmalari boolean dan foydalanadi.
 
 Testga mos keladigan profilni tanlang:
@@ -112,9 +112,9 @@ Misol: [example-microscopy](Observation-example-microscopy.html)
 
 | Qayd etiladigan ma'lumot | Ma'lumotnoma | Misol kodi | Qayerda saqlanadi |
 | :--- | :--- | :--- | :--- |
-| Test kodi | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `LOINC#53904-9` (Sputum smear microscopy, fluorescent) | `Observation.code` |
-| Komponent nimani bildiradi | [ObservationComponentCodeVS](ValueSet-observation-component-code-vs.html) | `observation-component-code-cs#Tub004-0032` (Grading) | `component.code` |
-| AFB darajasi | [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) | `observation-codeable-concept-cs#Tub003-0008` (3+ / 40 fields) | `component.valueCodeableConcept` |
+| Test kodi | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `LOINC#53904-9` (Sputum smear microscopy, fluorescent) | `Observation.code` |
+| Komponent nimani bildiradi | [DHISObservationComponentCodeVS](ValueSet-dhis-observation-component-code-vs.html) | `dhis-observation-component-code-cs#Tub004-0032` (Grading) | `component.code` |
+| AFB darajasi | [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) | `dhis-observation-codeable-concept-cs#Tub003-0008` (3+ / 40 fields) | `component.valueCodeableConcept` |
 | Tekshirilgan namuna | - | [DHISSpecimen](#collecting-a-specimen-specimen) ga havola | `specimen` |
 
 #### O'stirma, identifikatsiya va dorilarga sezgirlikni aniqlash
@@ -127,15 +127,15 @@ Misol: [example-tb-microscopy](Observation-example-tb-microscopy.html)
 
 | Qayd etiladigan ma'lumot | Ma'lumotnoma | Misol kodi | Qayerda saqlanadi |
 | :--- | :--- | :--- | :--- |
-| Test kodi | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `observation-dhis-code-cs#Tub002-0007` (Phenotypic DST on MGIT) | `Observation.code` |
-| Umumiy natija | [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) | `SNOMED CT#113858008` (M. tuberculosis complex) | `valueCodeableConcept` |
-| Tekshirilgan dori (DST) | [ObservationComponentCodeVS](ValueSet-observation-component-code-vs.html) | `observation-component-code-cs#Tub004-0008` (Isoniazid 0.1 mg/mL) | `component.code` |
-| Sezgirlik natijasi | [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) | `v3-ObservationInterpretation#R` (Resistant) | `component.valueCodeableConcept` |
+| Test kodi | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | ` dhis-observation-code-cs#Tub002-0007` (Phenotypic DST on MGIT) | `Observation.code` |
+| Umumiy natija | [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) | `SNOMED CT#113858008` (M. tuberculosis complex) | `valueCodeableConcept` |
+| Tekshirilgan dori (DST) | [DHISObservationComponentCodeVS](ValueSet-dhis-observation-component-code-vs.html) | `dhis-observation-component-code-cs#Tub004-0008` (Isoniazid 0.1 mg/mL) | `component.code` |
+| Sezgirlik natijasi | [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) | `v3-ObservationInterpretation#R` (Resistant) | `component.valueCodeableConcept` |
 | Tekshirilgan namuna | - | [DHISSpecimen](#collecting-a-specimen-specimen) ga havola | `specimen` |
 
-Aniqlangan turlar hamda iz va identifikatsiya kvalifikatorlari bevosita o'zining SNOMED CT kodidan foydalanadi; [observation-result-to-snomed](ConceptMap-observation-result-to-snomed.html) ConceptMap ularning har biri almashtiradigan DHIS natija kodini qayd etadi, surtma/o'stirma darajalari va standart ekvivalentga ega bo'lmagan chidamlilik diapazoni natijalari esa lokal kodni saqlaydi.
+Aniqlangan turlar hamda iz va identifikatsiya kvalifikatorlari bevosita o'zining SNOMED CT kodidan foydalanadi; [observation-result-to-snomed](ConceptMap-dhis-observation-result-to-snomed.html) ConceptMap ularning har biri almashtiradigan DHIS natija kodini qayd etadi, surtma/o'stirma darajalari va standart ekvivalentga ega bo'lmagan chidamlilik diapazoni natijalari esa lokal kodni saqlaydi.
 
-DST komponentlari uchun oddiy dori nomli agentlar bevosita LOINC `<drug> [Susceptibility]` kodidan foydalanadi; konsentratsiyani o'z ichiga olgan agentlar lokal kodni saqlaydi (standart kod tushirib qoldiradigan kritik konsentratsiya). [observation-component-to-loinc](ConceptMap-observation-component-to-loinc.html) ConceptMap har bir DHIS dori agentini uning LOINC tushunchasiga moslashtiradi.
+DST komponentlari uchun oddiy dori nomli agentlar bevosita LOINC `<drug> [Susceptibility]` kodidan foydalanadi; konsentratsiyani o'z ichiga olgan agentlar lokal kodni saqlaydi (standart kod tushirib qoldiradigan kritik konsentratsiya). [observation-component-to-loinc](ConceptMap-dhis-observation-component-to-loinc.html) ConceptMap har bir DHIS dori agentini uning LOINC tushunchasiga moslashtiradi.
 
 #### Ko'krak qafasi rentgeni
 
@@ -147,7 +147,7 @@ Misol: [example-observation-xray](Observation-example-observation-xray.html)
 
 | Qayd etiladigan ma'lumot | Ma'lumotnoma | Misol kodi | Qayerda saqlanadi |
 | :--- | :--- | :--- | :--- |
-| Test kodi | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `LOINC#30745-4` (Chest X-ray) | `Observation.code` |
+| Test kodi | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `LOINC#30745-4` (Chest X-ray) | `Observation.code` |
 | Topilma mavjud | - | `false` | `Observation.value` (boolean) |
 
 #### OIV testi
@@ -160,7 +160,7 @@ Misol: [example-obs-hiv](Observation-example-obs-hiv.html)
 
 | Qayd etiladigan ma'lumot | Ma'lumotnoma | Misol kodi | Qayerda saqlanadi |
 | :--- | :--- | :--- | :--- |
-| Test kodi | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `LOINC#56888-1` (HIV testing) | `Observation.code` |
+| Test kodi | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `LOINC#56888-1` (HIV testing) | `Observation.code` |
 | Natija | - | `true` | `Observation.value` (boolean) |
 
 ### Statsionarda yotishni hujjatlashtirish (Encounter)

@@ -41,14 +41,14 @@
 
 | Записываемая информация | Справочник | Пример кода | Где хранится |
 | :--- | :--- | :--- | :--- |
-| Диагноз | [ConditionCodeVS](ValueSet-condition-code-vs.html) | `SNOMED CT#88356006` (Primary tuberculous complex) | `Condition.code` |
+| Диагноз | [DHISConditionCodeVS](ValueSet-dhis-condition-code-vs.html) | `SNOMED CT#88356006` (Primary tuberculous complex) | `Condition.code` |
 | Клинический статус | [condition-clinical](https://dhp.uz/fhir/core/CodeSystem-clinical-status-cs.html) | `condition-clinical#active` (Active) | `clinicalStatus` |
 | Статус верификации | [condition-ver-status](https://dhp.uz/fhir/core/CodeSystem-condition-verification-status-cs.html) | `condition-ver-status#confirmed` (Confirmed) | `verificationStatus` |
 | Категория | [condition-category](http://terminology.hl7.org/CodeSystem/condition-category) | `condition-category#encounter-diagnosis` (Encounter Diagnosis) | `category` |
 | Когда началось | - | `2025-06-03` | `onsetDateTime` |
 | Субъект | - | ссылка на [Patient](#registering-a-patient-patient) | `subject` |
 
-Используйте код SNOMED CT везде, где существует точное соответствие; лишь немногие диагнозы без соответствия 1:1 в SNOMED CT (например, фиброзно-кавернозный туберкулёз и сопутствующие патологии, не связанные с ТБ) сохраняют локальный код. ConceptMap [tuberculosis-to-snomed](ConceptMap-tuberculosis-to-snomed.html) сопоставляет каждый диагностический код DHIS с его концептом SNOMED CT, так что интегратор может найти стандартный код для любого имеющегося у него локального кода.
+Используйте код SNOMED CT везде, где существует точное соответствие; лишь немногие диагнозы без соответствия 1:1 в SNOMED CT (например, фиброзно-кавернозный туберкулёз и сопутствующие патологии, не связанные с ТБ) сохраняют локальный код. ConceptMap [tuberculosis-to-snomed](ConceptMap-dhis-tuberculosis-to-snomed.html) сопоставляет каждый диагностический код DHIS с его концептом SNOMED CT, так что интегратор может найти стандартный код для любого имеющегося у него локального кода.
 
 ### Группировка курса лечения (EpisodeOfCare) {#grouping-the-treatment-course-episodeofcare}
 
@@ -87,10 +87,10 @@
 
 ### Запись результатов диагностических тестов (Observation) {#recording-diagnostic-test-results-observation}
 
-Каждый лабораторный результат или результат визуализации - это отдельное Observation. Во всех четырёх профилях ниже `Observation.code` идентифицирует тест и берётся из [ObservationCodeVS](ValueSet-observation-code-vs.html) - LOINC, где существует точный код, иначе локальный код для вариантов питательных сред и анализов. ConceptMap [observation-tuberculosis-code](ConceptMap-observation-tuberculosis-code.html) сопоставляет каждый код теста DHIS с его концептом LOINC. Различается то, как переносится результат:
+Каждый лабораторный результат или результат визуализации - это отдельное Observation. Во всех четырёх профилях ниже `Observation.code` идентифицирует тест и берётся из [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) - LOINC, где существует точный код, иначе локальный код для вариантов питательных сред и анализов. ConceptMap [observation-tuberculosis-code](ConceptMap-dhis-observation-tuberculosis-code.html) сопоставляет каждый код теста DHIS с его концептом LOINC. Различается то, как переносится результат:
 
-- кодированные результаты используют [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) (SNOMED CT для идентифицированных видов, локальные коды для степеней мазка/посева, а также коды интерпретации HL7, такие как `POS`/`NEG`),
-- компоненты результата (например, по одной строке на препарат в панели чувствительности) помечаются с помощью [ObservationComponentCodeVS](ValueSet-observation-component-code-vs.html),
+- кодированные результаты используют [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) (SNOMED CT для идентифицированных видов, локальные коды для степеней мазка/посева, а также коды интерпретации HL7, такие как `POS`/`NEG`),
+- компоненты результата (например, по одной строке на препарат в панели чувствительности) помечаются с помощью [DHISObservationComponentCodeVS](ValueSet-dhis-observation-component-code-vs.html),
 - находки да/нет используют boolean.
 
 Выберите профиль, соответствующий тесту:
@@ -112,9 +112,9 @@
 
 | Записываемая информация | Справочник | Пример кода | Где хранится |
 | :--- | :--- | :--- | :--- |
-| Код теста | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `LOINC#53904-9` (Sputum smear microscopy, fluorescent) | `Observation.code` |
-| Что сообщает компонент | [ObservationComponentCodeVS](ValueSet-observation-component-code-vs.html) | `observation-component-code-cs#Tub004-0032` (Grading) | `component.code` |
-| Степень КУБ | [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) | `observation-codeable-concept-cs#Tub003-0008` (3+ / 40 fields) | `component.valueCodeableConcept` |
+| Код теста | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `LOINC#53904-9` (Sputum smear microscopy, fluorescent) | `Observation.code` |
+| Что сообщает компонент | [DHISObservationComponentCodeVS](ValueSet-dhis-observation-component-code-vs.html) | `dhis-observation-component-code-cs#Tub004-0032` (Grading) | `component.code` |
+| Степень КУБ | [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) | `dhis-observation-codeable-concept-cs#Tub003-0008` (3+ / 40 fields) | `component.valueCodeableConcept` |
 | Исследованный образец | - | ссылка на [DHISSpecimen](#collecting-a-specimen-specimen) | `specimen` |
 
 #### Посев, идентификация и тестирование лекарственной чувствительности
@@ -127,15 +127,15 @@
 
 | Записываемая информация | Справочник | Пример кода | Где хранится |
 | :--- | :--- | :--- | :--- |
-| Код теста | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `observation-dhis-code-cs#Tub002-0007` (Phenotypic DST on MGIT) | `Observation.code` |
-| Общий результат | [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) | `SNOMED CT#113858008` (M. tuberculosis complex) | `valueCodeableConcept` |
-| Тестируемый препарат (ТЛЧ) | [ObservationComponentCodeVS](ValueSet-observation-component-code-vs.html) | `observation-component-code-cs#Tub004-0008` (Isoniazid 0.1 mg/mL) | `component.code` |
-| Результат чувствительности | [ObservationCodeableConceptVS](ValueSet-observation-codeable-concept-vs.html) | `v3-ObservationInterpretation#R` (Resistant) | `component.valueCodeableConcept` |
+| Код теста | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `dhis-observation-code-cs#Tub002-0007` (Phenotypic DST on MGIT) | `Observation.code` |
+| Общий результат | [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) | `SNOMED CT#113858008` (M. tuberculosis complex) | `valueCodeableConcept` |
+| Тестируемый препарат (ТЛЧ) | [DHISObservationComponentCodeVS](ValueSet-dhis-observation-component-code-vs.html) | `dhis-observation-component-code-cs#Tub004-0008` (Isoniazid 0.1 mg/mL) | `component.code` |
+| Результат чувствительности | [DHISObservationCodeableConceptVS](ValueSet-dhis-observation-codeable-concept-vs.html) | `v3-ObservationInterpretation#R` (Resistant) | `component.valueCodeableConcept` |
 | Исследованный образец | - | ссылка на [DHISSpecimen](#collecting-a-specimen-specimen) | `specimen` |
 
-Идентифицированные виды и квалификаторы следов и идентификации используют свой код SNOMED CT напрямую; ConceptMap [observation-result-to-snomed](ConceptMap-observation-result-to-snomed.html) фиксирует код результата DHIS, который каждый из них заменяет, тогда как степени мазка/посева и результаты диапазонов устойчивости без стандартного эквивалента сохраняют локальный код.
+Идентифицированные виды и квалификаторы следов и идентификации используют свой код SNOMED CT напрямую; ConceptMap [dhis-observation-result-to-snomed](ConceptMap-dhis-observation-result-to-snomed.html) фиксирует код результата DHIS, который каждый из них заменяет, тогда как степени мазка/посева и результаты диапазонов устойчивости без стандартного эквивалента сохраняют локальный код.
 
-Для компонентов ТЛЧ агенты с простым названием препарата используют код LOINC `<drug> [Susceptibility]` напрямую; агенты, несущие концентрацию, сохраняют локальный код (критическая концентрация, которую отбрасывает стандартный код). ConceptMap [observation-component-to-loinc](ConceptMap-observation-component-to-loinc.html) сопоставляет каждый препарат DHIS с его концептом LOINC.
+Для компонентов ТЛЧ агенты с простым названием препарата используют код LOINC `<drug> [Susceptibility]` напрямую; агенты, несущие концентрацию, сохраняют локальный код (критическая концентрация, которую отбрасывает стандартный код). ConceptMap [dhis-observation-component-to-loinc](ConceptMap-dhis-observation-component-to-loinc.html) сопоставляет каждый препарат DHIS с его концептом LOINC.
 
 #### Рентгенография грудной клетки
 
@@ -147,7 +147,7 @@
 
 | Записываемая информация | Справочник | Пример кода | Где хранится |
 | :--- | :--- | :--- | :--- |
-| Код теста | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `LOINC#30745-4` (Chest X-ray) | `Observation.code` |
+| Код теста | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `LOINC#30745-4` (Chest X-ray) | `Observation.code` |
 | Находка присутствует | - | `false` | `Observation.value` (boolean) |
 
 #### Тест на ВИЧ
@@ -160,7 +160,7 @@
 
 | Записываемая информация | Справочник | Пример кода | Где хранится |
 | :--- | :--- | :--- | :--- |
-| Код теста | [ObservationCodeVS](ValueSet-observation-code-vs.html) | `LOINC#56888-1` (HIV testing) | `Observation.code` |
+| Код теста | [DHISObservationCodeVS](ValueSet-dhis-observation-code-vs.html) | `LOINC#56888-1` (HIV testing) | `Observation.code` |
 | Результат | - | `true` | `Observation.value` (boolean) |
 
 ### Документирование стационарного пребывания (Encounter)

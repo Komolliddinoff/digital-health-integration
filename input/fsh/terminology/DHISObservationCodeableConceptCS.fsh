@@ -1,9 +1,9 @@
-CodeSystem: ObservationCodeableConceptCS
-Id: observation-codeable-concept-cs
+CodeSystem: DHISObservationCodeableConceptCS
+Id: dhis-observation-codeable-concept-cs
 Title: "DHIS Observation Result CodeSystem"
 Description: "Local code system of coded tuberculosis test results (smear/culture grades, processing states, identified species and drug-susceptibility outcomes) used as Observation.valueCodeableConcept in the DHIS information system, with Russian and English designations. The DHIS Observation Result to SNOMED CT ConceptMap records the SNOMED CT concept for the species and standard result qualifiers; in resources use the SNOMED CT code directly wherever an exact match exists (see the DHIS Observation Result ValueSet), keeping a local code only where no exact standard match exists."
 
-* insert OriginalCodeSystemDraft(observation-codeable-concept-cs)
+* insert OriginalCodeSystemDraft(dhis-observation-codeable-concept-cs)
 
 * #Tub003-0001 "x – Natija yaroqsiz"
   * ^designation[0].language = #ru

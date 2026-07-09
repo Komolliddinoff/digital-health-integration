@@ -1,9 +1,9 @@
-CodeSystem: ConditionCodeCS
-Id: condition-code-cs
+CodeSystem: DHISConditionCodeCS
+Id: dhis-condition-code-cs
 Title: "DHIS Condition Code CodeSystem"
 Description: "Local code system of tuberculosis diagnoses and comorbidities used by the DHIS information system, with Russian and English designations. The DHIS Condition Code to SNOMED CT ConceptMap records the SNOMED CT concept for every code; in resources use the SNOMED CT code directly wherever an exact match exists (see the DHIS Condition Code ValueSet), keeping a local code only where no exact SNOMED CT match exists."
 
-* insert OriginalCodeSystemDraft(condition-code-cs)
+* insert OriginalCodeSystemDraft(dhis-condition-code-cs)
 
 * #tub001-0001 "Birlamchi sil kompleksi"
   * ^designation[0].language = #ru

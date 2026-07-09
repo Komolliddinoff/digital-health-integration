@@ -51,49 +51,6 @@ Usage: #definition
 * uniqueId[0].value = "https://dhp.uz/fhir/core/sid/uz/organization-code"
 * uniqueId[0].preferred = true
 
-Instance: passport-identifier-ns
-InstanceOf: NamingSystem
-Description: "NamingSystem defining the canonical URI for passport identifiers used for patient identification."
-Usage: #definition
-* name = "PassportIdentifierNamingSystem"
-* status = #active
-* kind = #identifier
-* date = "2026-01-15"
-* uniqueId[0].type = #uri
-* uniqueId[=].value = "https://dhp.uz/fhir/core/sid/passport"
-* uniqueId[=].preferred = true
-
-Instance: registration-number
-InstanceOf: NamingSystem
-Description: "NamingSystem defining the canonical URI for document registration numbers in healthcare documents."
-Usage: #definition
-* name = "DocumentRegistrationNumber"
-* status = #active
-* kind = #identifier
-* date = "2026-04-22"
-* publisher = "UZINFOCOM"
-* responsible = "UZINFOCOM"
-* description = "Identifier system for document registration numbers."
-* uniqueId[0].type = #uri
-* uniqueId[0].value = "https://dhp.uz/fhir/core/sid/doc/uz/registration-number"
-* uniqueId[0].preferred = true
-
-Instance: medical-record-number
-InstanceOf: NamingSystem
-Description: "NamingSystem defining the canonical URI for medical record numbers assigned by healthcare organizations."
-Usage: #definition
-* name = "MedicalRecordNumber"
-* status = #active
-* kind = #identifier
-* date = "2026-04-22"
-* publisher = "UZINFOCOM"
-* responsible = "UZINFOCOM"
-* description = "Identifier system for hospital medical record numbers."
-* uniqueId[0].type = #uri
-* uniqueId[0].value = "https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number"
-* uniqueId[0].preferred = true
-
-
 
 
 Instance: department-code-ns
@@ -111,11 +68,28 @@ Usage: #definition
 * uniqueId[0].value = "https://dhp.uz/fhir/core/sid/uz/department-code"
 * uniqueId[0].preferred = true
 
+
+Instance: medical-record-number-system
+InstanceOf: NamingSystem
+Usage: #definition
+
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/medical-record-number-system"
+* name = "UzbekistanMedicalRecordNumberSystem"
+* status = #active
+* kind = #identifier
+* date = "2026-06-22"
+* publisher = "Uzinfocom"
+* responsible = "Uzinfocom"
+* description = "Identifier system used for medical record numbers assigned to encounters and inpatient records in the Digital Health Platform."
+* jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
+* uniqueId[0].type = #uri
+* uniqueId[=].value = "https://dhp.uz/fhir/core/sid/doc/uz/medical-record-number"
+* uniqueId[=].preferred = true
 Instance: screening-identifier-system
 InstanceOf: NamingSystem
 Description: "Identifier system for the Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System"
 Usage: #definition
-* url = "https://dhp.uz/fhir/integrations/NamingSystem/screening-identifier-system"
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/screening-identifier-system"
 * name = "ScreeningIdentifierSystem"
 * status = #active
 * kind = #identifier
@@ -132,7 +106,7 @@ Instance: screening-patient-identifier-system
 InstanceOf: NamingSystem
 Description: "Patient identifier system for the Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System"
 Usage: #definition
-* url = "https://dhp.uz/fhir/integrations/NamingSystem/screening-patient-identifier-system"
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/screening-patient-identifier-system"
 * name = "ScreeningPatientIdentifierSystem"
 * status = #active
 * kind = #identifier
@@ -149,7 +123,7 @@ Instance: screening-practitioner-identifier-system
 InstanceOf: NamingSystem
 Description: "Practitioner identifier system for the Cervical Cancer Screening Quality Assessment and Monitoring and Early Breast Cancer Detection Information System"
 Usage: #definition
-* url = "https://dhp.uz/fhir/integrations/NamingSystem/screening-practitioner-identifier-system"
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/screening-practitioner-identifier-system"
 * name = "ScreeningPractitionerIdentifierSystem"
 * status = #active
 * kind = #identifier

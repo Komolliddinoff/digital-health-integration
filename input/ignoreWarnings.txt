@@ -24,7 +24,14 @@ The <script> containing the javascript '//%
 Binding http://hl7.org/fhir/ValueSet/mimetypes|5.0.0 could not be expanded
 
 # Screening: body-site is too large for the publisher to verify subset membership
-Unable to check if https://dhp.uz/fhir/integrations/ValueSet/screening-body-site-vs is a proper subset of http://hl7.org/fhir/ValueSet/body-site|5.0.0 - value set is too large to check
+Unable to check if https://terminology.dhp.uz/fhir/integrations/ValueSet/screening-body-site-vs is a proper subset of http://hl7.org/fhir/ValueSet/body-site|5.0.0 - value set is too large to check
 
 # IG Publisher 2.2.10 emits an OID-assignment recommendation for every CodeSystem/ValueSet. We don't use OID-based terminology (e.g. CDA), so assigning OIDs IG-wide adds no value here.
 %should have an OID assigned to cater for possible use with OID based terminology systems%
+
+Unable to check if https://terminology.dhp.uz/fhir/integrations/ValueSet/dhis-observation-method-vs is a proper subset of http://hl7.org/fhir/ValueSet/observation-methods|5.0.0 - value set is too large to check
+
+# dhis-body-site-vs includes the whole FHIR body-site VS, which is too large to expand.
+# Trailing % => startsWith match: the real message has an embedded newline before its final ')',
+# so an exact-match line never matches. Cut at (>1000) to stay independent of tx-server wording.
+Unable to expand included value set 'http://hl7.org/fhir/ValueSet/body-site': The value set 'http://hl7.org/fhir/ValueSet/body-site|5.0.0' expansion has too many codes to produce (>1000)%

@@ -3,7 +3,7 @@ InstanceOf: ConceptMap
 Usage: #definition
 Title: "Breast Findings to SNOMED CT"
 Description: "Maps the local UZ macrocalcification finding code to SNOMED CT. All other breast finding codes use SNOMED CT directly and need no mapping."
-* url = "https://dhp.uz/fhir/integrations/ConceptMap/screening-breast-finding-to-snomed"
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/screening-breast-finding-to-snomed"
 * name = "ScreeningBreastFindingToSnomed"
 * status = #draft
 * experimental = false

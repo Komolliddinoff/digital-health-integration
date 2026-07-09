@@ -3,7 +3,7 @@ InstanceOf: ConceptMap
 Usage: #definition
 Title: "HPV Results to SNOMED CT"
 Description: "Maps local UZ screening HPV result codes to SNOMED CT."
-* url = "https://terminology.dhp.uz/ConceptMap/screening-hpv-to-snomed"
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/screening-hpv-to-snomed"
 * name = "ScreeningHPVToSnomed"
 * status = #draft
 * experimental = false

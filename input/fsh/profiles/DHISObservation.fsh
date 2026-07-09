@@ -26,10 +26,10 @@ Description: "Profile for recording tuberculosis diagnostic test results and cli
 
 * component 0..* MS
   * code 1..1 MS
-  * code from ObservationComponentCodeVS (required)
+  * code from DHISObservationComponentCodeVS (required)
   * value[x] 1..1 MS
   * value[x] only CodeableConcept or dateTime or string
-  * valueCodeableConcept from ObservationCodeableConceptVS
+  * valueCodeableConcept from DHISObservationCodeableConceptVS
 
 
 // Instance Example
@@ -47,6 +47,6 @@ Usage: #example
 * valueCodeableConcept =  http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation#POS "Positive"
 * specimen = Reference(example-dhis-specimen)
 
-* component[0].code = https://terminology.dhp.uz/CodeSystem/observation-component-code-cs#Tub004-0008 "Isoniazid (0.1 mg/mL)"
-* component[0].valueCodeableConcept = https://terminology.dhp.uz/CodeSystem/observation-codeable-concept-cs#Tub003-0040 "Macrota sample sediment"
+* component[0].code = https://terminology.dhp.uz/fhir/integrations/CodeSystem/dhis-observation-component-code-cs#tub004-0008 "Isoniazid (0.1 mg/mL)"
+* component[0].valueCodeableConcept = https://terminology.dhp.uz/fhir/integrations/CodeSystem/dhis-observation-codeable-concept-cs#Tub003-0040 "Macrota sample sediment"
 

@@ -3,7 +3,7 @@ InstanceOf: ConceptMap
 Usage: #definition
 Title: "Cervical Cytology Results to SNOMED CT"
 Description: "Maps local UZ screening cytology result codes to SNOMED CT."
-* url = "https://terminology.dhp.uz/ConceptMap/screening-cervical-cytology-to-snomed"
+* url = "https://terminology.dhp.uz/fhir/integrations/ConceptMap/screening-cervical-cytology-to-snomed"
 * name = "ScreeningCervicalCytologyToSnomed"
 * status = #draft
 * experimental = false
