@@ -29,15 +29,7 @@ Description: "Value set of coded tuberculosis test results for use in Observatio
 * include dhis-observation-codeable-concept-cs#Tub003-0040
 * include dhis-observation-codeable-concept-cs#Tub003-0041
 * include dhis-observation-codeable-concept-cs#Tub003-0042
-* include codes from system http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
-
-* include $observation-interpretation#S
-* include $observation-interpretation#R
-* include $observation-interpretation#IND
-* include $observation-interpretation#DET
-* include $observation-interpretation#ND
-* include $observation-interpretation#POS
-* include $observation-interpretation#NEG
+* include codes from system $observation-interpretation
 
 * include $sct#113858008
 * include $sct#110379001
