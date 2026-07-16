@@ -40,8 +40,7 @@ Alias: $encounter-diagnosis-use = http://hl7.org/fhir/ValueSet/encounter-diagnos
 Alias: $encounter-local-priority-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-local-priority-cs
 Alias: $encounter-local-subject-status-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-local-subject-status-cs
 
-Alias: $encounter-purpose-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-purpose-cs
-Alias: $diagnosis-role = https://dhp.uz/fhir/integrations/CodeSystem/diagnosis-role
+
 
 Alias: $encounter-status = http://hl7.org/fhir/encounter-status
 Alias: $encounter-status-vs = https://terminology.dhp.uz/fhir/core/ValueSet/encounter-status-vs
@@ -69,7 +68,7 @@ Alias: $iso3166-1-2 = http://hl7.org/fhir/ValueSet/iso3166-1-2
 Alias: $issue-severity = http://hl7.org/fhir/issue-severity
 Alias: $item-type = http://hl7.org/fhir/ValueSet/item-type
 Alias: $lab-pan = https://terminology.dhp.uz/fhir/core/CodeSystem/lab-pan-cs
-Alias: $local-observation-code = https://dhp.uz/fhir/integrations/CodeSystem/local-observation-code
+
 Alias: $location-form = https://terminology.dhp.uz/fhir/core/CodeSystem/organizational-specialization-cs
 Alias: $location-status = http://hl7.org/fhir/location-status
 Alias: $location-unit = https://dhp.uz/fhir/core/NamingSystem/location-unit
@@ -153,8 +152,9 @@ Alias: $discharge-disposition = http://terminology.hl7.org/CodeSystem/discharge-
 Alias: $v3-ActPriority = http://terminology.hl7.org/CodeSystem/v3-ActPriority
 Alias: $v3-ObservationInterpretation = http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
 Alias: $icd10 = http://hl7.org/fhir/sid/icd-10
-Alias: $diagnosis-role = https://terminology.dhp.uz/CodeSystem/diagnosis-role
-Alias: $local-observation-code = https://terminology.dhp.uz/CodeSystem/local-observation-code
+
+
+
 Alias: $education-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/education-cs
 Alias: $occupation-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/position-and-profession-cs
 Alias: $benefit-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/benefits-cs
@@ -170,7 +170,7 @@ Alias: $re-admission-local-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/
 Alias: $discharge-disposition-home-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-discharge-disposition-home-cs
 Alias: $location-form = https://terminology.dhp.uz/fhir/core/CodeSystem/organizational-specialization-cs
 Alias: $coverage-type = https://terminology.dhp.uz/fhir/core/CodeSystem/coverage-type-cs
-Alias: $encounter-purpose-cs = https://terminology.dhp.uz/CodeSystem/encounter-purpose-cs
+
 Alias: $encounter-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-type-cs
 
 // ===================== SCREENING =====================
@@ -191,3 +191,17 @@ Alias: $diagnostic-report-status-vs = https://terminology.dhp.uz/fhir/core/Value
 
 Alias: $comparator = http://hl7.org/fhir/quantity-comparator
 Alias: $specimen-role = http://hl7.org/fhir/specimen-role
+
+Alias: $loinc = http://loinc.org
+Alias: $loinc-vs = http://loinc.org/vs
+
+
+
+Alias: $diagnosis-role = https://dhp.uz/fhir/integrations/CodeSystem/diagnosis-role
+Alias: $diagnosis-role = https://terminology.dhp.uz/CodeSystem/diagnosis-role
+
+Alias: $local-observation-code = https://terminology.dhp.uz/CodeSystem/local-observation-code
+Alias: $local-observation-code = https://dhp.uz/fhir/integrations/CodeSystem/local-observation-code
+
+Alias: $encounter-purpose-cs = https://terminology.dhp.uz/CodeSystem/encounter-purpose-cs
+Alias: $encounter-purpose-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/encounter-purpose-cs
