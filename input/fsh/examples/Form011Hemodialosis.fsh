@@ -90,9 +90,9 @@ Usage: #inline
 * type = $encounter-type-cs#mserv-0001-00004 // Treatment
 * subject = Reference(urn:uuid:b2c3d4e5-f6a7-8901-bcde-f12345678901)
 * participant[0].type = $v3-ParticipationType#PPRF "primary performer"
-* participant[=].actor = Reference(urn:uuid:e5f6a7b8-c9d0-1234-efab-345678901234) "Karimov A.A."
+* participant[=].actor = Reference(urn:uuid:d4e5f6a7-b8c9-0123-defa-234567890123) "Karimov A.A."
 * participant[+].type = $v3-ParticipationType#SPRF "secondary performer"
-* participant[=].actor = Reference(urn:uuid:f6a7b8c9-d0e1-2345-fabc-456789012345) "Raxmatova M.M."
+* participant[=].actor = Reference(urn:uuid:e5f6a7b8-c9d0-1234-efab-345678901234) "Raxmatova M.M."
 * actualPeriod.start = "2026-01-06T09:00:00+05:00"
 * actualPeriod.end = "2026-01-06T13:00:00+05:00"
 
