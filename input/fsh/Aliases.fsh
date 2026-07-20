@@ -1,6 +1,7 @@
 Alias: $data-absent-reason = http://terminology.hl7.org/CodeSystem/data-absent-reason
 Alias: $document-category-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/document-category-cs
 Alias: $gender = http://hl7.org/fhir/administrative-gender
+Alias: $gender-other = https://dhp.uz/fhir/core/StructureDefinition/gender-other
 Alias: $observation-status = http://hl7.org/fhir/observation-status
 Alias: $address-type = http://hl7.org/fhir/address-type
 Alias: $address-use = http://hl7.org/fhir/address-use
@@ -51,7 +52,6 @@ Alias: $name-use = http://hl7.org/fhir/name-use
 Alias: $nationaluniqueID = https://dpm.uz/identifier/national-unique-id
 Alias: $nomenclature-group = https://dhp.uz/fhir/core/CodeSystem/nomenclature-group
 Alias: $object-role = http://terminology.hl7.org/CodeSystem/object-role
-Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category //http://hl7.org/fhir/observation-category
 Alias: $observation-codes = http://hl7.org/fhir/ValueSet/observation-codes
 Alias: $observation-dataAbsentReason = http://terminology.hl7.org/CodeSystem/data-absent-reason
 Alias: $observation-interpretation = http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation
@@ -107,6 +107,9 @@ Alias: $valueset-supplement = http://hl7.org/fhir/StructureDefinition/valueset-s
 Alias: $drs = http://hl7.org/fhir/document-reference-status
 Alias: $drcs = 	http://hl7.org/fhir/composition-status
 Alias: $drca = http://hl7.org/fhir/composition-attestation-mode
+Alias: $loinc_code = http://loinc.org
+Alias: $request-status = http://hl7.org/fhir/request-status
+Alias: $observation-category = http://terminology.hl7.org/CodeSystem/observation-category //http://hl7.org/fhir/observation-category
 
 Alias: $encounter-diagnosis-use-cs = http://hl7.org/fhir/encounter-diagnosis-use
 Alias: $episode-of-care-type = https://terminology.dhp.uz/fhir/core/CodeSystem/episode-of-care-type-cs

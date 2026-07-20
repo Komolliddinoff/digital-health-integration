@@ -64,7 +64,7 @@ parameters:
   # shownav: true
 
   pin-canonicals: pin-all
-  apply-version: false # don't override the version in the knowledge resources
+  apply-version: false # don't override the version in the knowledge resourcesi
   default-version: true
 
   show-inherited-invariants: false # hide invariants inherited from the base resource in profile tables
@@ -103,6 +103,8 @@ pages:
     title: Form 066 1 Mapping
   cervical-breast-cancer-screening.md:
     title: Cervical and Breast Cancer Screening
+  sick-leave.md:
+    title: Sick Leave
   dhis-tuberculosis.md:
     title: Tuberculosis (DHIS)
   changelog.md:
@@ -120,6 +122,7 @@ menu:
     Form 066-1 Mapping: form-066-1-mapping.html
   Integrations:
     Cervical and Breast Cancer Screening: cervical-breast-cancer-screening.html
+    Sick Leave: sick-leave.html
     Tuberculosis (DHIS): dhis-tuberculosis.html
   Artifacts: artifacts.html
   Changelog: changelog.html
