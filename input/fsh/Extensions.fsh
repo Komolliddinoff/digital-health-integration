@@ -1,3 +1,41 @@
+Extension: FundingSourceExtension
+Id: funding-source
+Title: "Funding Source Extension"
+Description: "Financial source category for inventory stocks and supply requisitions."
+* ^status = #draft
+* ^experimental = true
+* ^context[0].type = #element
+* ^context[0].expression = "InventoryItem"
+* ^context[1].type = #element
+* ^context[1].expression = "SupplyRequest"
+* value[x] 1..1 MS
+* value[x] only CodeableConcept
+* valueCodeableConcept from FundingSourceVS (required)
+
+Extension: SupplyDeliveryReturnReason
+Id: return-reason
+Title: "Supply Delivery Return Reason"
+Description: "Return reason coded concept for supplied item line in return transactions."
+* ^status = #draft
+* ^experimental = true
+* ^context.type = #element
+* ^context.expression = "SupplyDelivery.suppliedItem"
+* value[x] 1..1 MS
+* value[x] only CodeableConcept
+* valueCodeableConcept from ReturnReasonVS (required)
+
+Extension: SupplyDeliveryDeliverFrom
+Id: deliver-from
+Title: "Supply Delivery Deliver From"
+Description: "Reference to the dispatching source storage Location (warehouse/department)."
+* ^status = #draft
+* ^experimental = true
+* ^context.type = #element
+* ^context.expression = "SupplyDelivery"
+* value[x] 1..1 MS
+* value[x] only Reference(UZCoreLocation)
+
+
 Extension: AdmissionOrigin
 Id: admission-origin
 Title: "Admission Origin"
