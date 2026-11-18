@@ -1,3 +1,53 @@
+### In development
+
+#### Added
+
+[Blood Donor Deferral Flag](StructureDefinition-blood-donor-deferral-flag.html) records a donor deferral, with [temporary](Flag-example-blood-donor-temporary-deferral.html) and [permanent](Flag-example-blood-donor-permanent-deferral.html) examples. The `workflow-reason` extension carries the reason from a local [deferral reason](CodeSystem-donor-deferral-reason-cs.html) code system ([ValueSet](ValueSet-donor-deferral-reason-vs.html)).
+
+[Blood Service](blood-service.html) maps the service, from donor registration and testing to collection, components, stock, supply and transfusion, onto UZ Core profiles and [Blood Service Registration Observation](StructureDefinition-blood-service-registration-observation.html).
+
+[Blood Service Registration Observation](StructureDefinition-blood-service-registration-observation.html), based on UZ Core Observation, records a person's registration with the blood service as a blood donor or a recipient. It carries the registration number, patient, effective date and time, encounter and performer. Component slices carry the donor category, donation compensation and donation type for a donor and the ICD-10 diagnosis for a recipient; a recipient registration cannot carry the donor components. Examples cover a staff donor, a reserve donor and a recipient, with a registration Encounter and registrar Practitioner for the recipient.
+
+Supporting terminology: a [blood service observation type](CodeSystem-blood-service-observation-type-cs.html) code system for the registration types ([ValueSet](ValueSet-blood-service-registration-type-vs.html)) and component codes, a [donor category](ValueSet-donor-category-vs.html) value set (SNOMED CT `275561000` for a staff donor, a local [code](CodeSystem-donor-category-cs.html) for a reserve donor), a local [donation compensation](CodeSystem-donation-compensation-cs.html) code system ([ValueSet](ValueSet-donation-compensation-vs.html)), a SNOMED CT [donation type](ValueSet-donation-type-vs.html) value set, and Uzbek and Russian [translations](CodeSystem-blood-service-snomed-translations-cs.html) of the SNOMED CT codes. The registration number uses the new [blood registration number](NamingSystem-blood-registration-number-system.html) identifier system `https://dhp.uz/fhir/core/sid/doc/uz/blood-registration`.
+
+[Blood ServiceRequest](StructureDefinition-blood-servicerequest.html) orders individual tests, panels and component processing operations, with fixed order and donation identifier systems, Patient or Location subjects, BloodLabCodesVS and BloodComponentProcessingCS, SNOMED CT processing codes and 15 examples.
+
+[Blood Transfusion Assessment Observation](StructureDefinition-blood-transfusion-assessment-observation.html) records the ABO, Rh-Hr and biological compatibility tests between a recipient and one blood unit, with SNOMED CT results, and [Blood Recipient History Observation](StructureDefinition-blood-recipient-history-observation.html) records the recipient's transfusion and obstetric history it is based on.
+
+The [donor questionnaire](forms.html?form=donor-questionnaire) is a 35-question donor interview in Uzbek, Russian and English, with a [completed response example](QuestionnaireResponse-example-donor-questionnaire-response.html), a supporting patient and a [Blood Service step](blood-service.html#interviewing) on which answers can lead to a deferral. The donor deferral reason code system is reused from the donor deferral specification. The blood service program context groups the questionnaire on the Questionnaires page.
+
+[Form 027 extract from a patient's medical record](StructureDefinition-form-027-medical-record-extract-composition.html) is profiled as a FHIR Document, covering registration, personal information, residence, referral and diagnosis, clinical information, treatment and recommendations, next steps and responsible persons across 8 Composition sections. It ships an example document Bundle and a [field-by-field mapping page](form-027-mapping.html).
+
+[Form 003 inpatient medical record](StructureDefinition-form-003-inpatient-medical-record-composition.html) is profiled as a FHIR Document, covering administrative and personal information, admission, admission screening, the primary examination, the examination plan and results, diagnoses, operations, the medication and procedure sheets, the temperature chart, the clinical course, the treatment outcome, temporary disability, the post-mortem conclusion and responsible persons across 20 Composition sections. It ships an example document Bundle and a [field-by-field mapping page](form-003-mapping.html).
+
+[Form 044 medical certificate for travelers abroad](StructureDefinition-form-044-travel-clearance-composition.html) is profiled as a FHIR Document, covering personal information, past infectious diseases, the commission's travel clearance with destination country and business trip period, place of residence and the commission chair and members across 5 Composition sections. It ships an example document Bundle and a [field-by-field mapping page](form-044-mapping.html).
+
+[Search](search.html), opened from a new box in the page header, finds resources by title, name, URL or description, and codes, terms and mappings in code systems, value sets and ConceptMaps, in English, Russian and Uzbek. Results can be narrowed by resource type.
+
+#### Changed
+
+The [Form 011](StructureDefinition-form-011-hemodialysis-composition.html), [Form 066](StructureDefinition-form-066-hospital-discharge-composition.html), [Form 066-1](StructureDefinition-form-066-1-psychiatric-discharge-composition.html) and [Form 130](StructureDefinition-form-130-laboratory-test-results-composition.html) Compositions no longer fix `status` to `final`, so a document can follow the [document lifecycle](document-statuses.html) through `preliminary`, `amended` and `entered-in-error`.
+
+Each language's JSON copy of a resource now keeps the other languages as `translation` extensions, as the package does; before, the JSON linked from the English, Russian and Uzbek pages had them removed.
+
+### Version 0.12.1
+
+#### Changed
+
+The [Form 097](form-097-mapping.html) and [Form 111](form-111-mapping.html) value sets link their SNOMED CT and LOINC supplements, so their codes show Russian and Uzbek displays.
+
+Organizations in the [Form 097](form-097-mapping.html) examples are identified by their Soliq tax ID, as in the other form examples since 0.12.0. The vitamin K Medication is a UZ Core Medication coded with its INN, and the document is dated at discharge.
+
+[Form 097](StructureDefinition-form-097-newborn-development-composition.html) prophylaxis and immunization section entries reference [UZ Core Immunization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-immunization.html) instead of any Immunization, so vaccinations sent in Form 097 conform to UZ Core.
+
+The Apgar component score, basic newborn skin colour and newborn care location code systems and value sets (`apgar-component-score-cs`, `newborn-skin-color-basic-cs`, `newborn-care-location-cs` and their `-vs` value sets) are removed. No profile bound them: Form 097 codes the Apgar score with LOINC and skin colour from [Newborn Skin Color Detailed](ValueSet-newborn-skin-color-detailed-vs.html).
+
+[Form 111](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) registration section entries may also be [UZ Core Socioeconomic Observations](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-socioeconomic-observation.html). [Previous Pregnancy Outcome](ValueSet-form111-previous-pregnancy-outcome-vs.html) adds miscarriage (SNOMED CT `17369002`). The [Form 111 mapping](form-111-mapping.html) describes the Composition.status lifecycle: `preliminary` while the card is open, `final` once it is closed, `amended` for later corrections and `entered-in-error` if it is withdrawn. The [antenatal card number](NamingSystem-antenatal-card-number-system.html) is carried in EpisodeOfCare.identifier, not Encounter.identifier.
+
+#### Documentation
+
+The [forms overview](forms-overview.html) and its 11 volume pages, diagrams included, are available in Russian and Uzbek.
+
 ### Version 0.12.0
 
 #### Added

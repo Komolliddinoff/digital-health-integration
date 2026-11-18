@@ -1,3 +1,53 @@
+### В разработке
+
+#### Добавлено
+
+[Blood Donor Deferral Flag](StructureDefinition-blood-donor-deferral-flag.html) фиксирует отвод донора; есть примеры [временного](Flag-example-blood-donor-temporary-deferral.html) и [постоянного](Flag-example-blood-donor-permanent-deferral.html) отвода. Расширение `workflow-reason` содержит причину из локальной кодовой системы [причин отвода](CodeSystem-donor-deferral-reason-cs.html) ([ValueSet](ValueSet-donor-deferral-reason-vs.html)).
+
+[Blood Service Registration Observation](StructureDefinition-blood-service-registration-observation.html) на основе UZ Core Observation фиксирует регистрацию человека в службе крови как донора или реципиента. Оно содержит регистрационный номер, пациента, дату и время, Encounter и исполнителя. Срезы компонентов передают категорию донора, оплату и вид донации для донора и диагноз по МКБ-10 для реципиента; регистрация реципиента не может содержать компоненты донора. Примеры охватывают кадрового донора, резервного донора и реципиента, с Encounter регистрации и регистратором Practitioner для реципиента.
+
+Сопутствующая терминология: кодовая система [типов наблюдений службы крови](CodeSystem-blood-service-observation-type-cs.html) для типов регистрации ([ValueSet](ValueSet-blood-service-registration-type-vs.html)) и кодов компонентов, набор значений [категории донора](ValueSet-donor-category-vs.html) (SNOMED CT `275561000` для кадрового донора, локальный [код](CodeSystem-donor-category-cs.html) для резервного), локальная кодовая система [оплаты донации](CodeSystem-donation-compensation-cs.html) ([ValueSet](ValueSet-donation-compensation-vs.html)), набор значений SNOMED CT [вид донации](ValueSet-donation-type-vs.html), а также [переводы](CodeSystem-blood-service-snomed-translations-cs.html) кодов SNOMED CT на узбекский и русский. Регистрационный номер использует новую систему идентификаторов [номера регистрации в службе крови](NamingSystem-blood-registration-number-system.html) `https://dhp.uz/fhir/core/sid/doc/uz/blood-registration`.
+
+[Blood ServiceRequest](StructureDefinition-blood-servicerequest.html) оформляет отдельные исследования, панели и операции переработки; добавлены фиксированные системы номеров назначения и донации, subject Patient или Location, BloodLabCodesVS и BloodComponentProcessingCS, коды SNOMED CT для переработки и 15 примеров.
+
+[Поиск](search.html), который открывается из нового поля в шапке страницы, находит ресурсы по заголовку, имени, URL или описанию, а также коды, термины и сопоставления в системах кодов, наборах значений и ConceptMap на английском, русском и узбекском языках. Результаты можно отфильтровать по типу ресурса.
+
+Страница [Blood Service](blood-service.html) описывает работу службы крови, от регистрации и обследования донора до забора, компонентов, запасов, поставки и трансфузии, через профили UZ Core и [Blood Service Registration Observation](StructureDefinition-blood-service-registration-observation.html).
+
+[Blood Transfusion Assessment Observation](StructureDefinition-blood-transfusion-assessment-observation.html) фиксирует пробы на совместимость по ABO, по Rh-Hr и биологическую пробу между реципиентом и одной единицей крови с результатами в SNOMED CT, а [Blood Recipient History Observation](StructureDefinition-blood-recipient-history-observation.html) - трансфузионный и акушерский анамнез реципиента, на который она опирается.
+
+[Анкета донора](forms.html?form=donor-questionnaire) содержит 35 вопросов на узбекском, русском и английском языках, [заполненный пример ответа](QuestionnaireResponse-example-donor-questionnaire-response.html) с пациентом и [шаг на странице Blood Service](blood-service.html#interviewing) о том, какие ответы могут привести к отводу. Используется кодовая система причин отвода из спецификации службы крови. Контекст программы группирует анкету на странице опросников.
+
+[Форма 027, выписка из медицинской карты пациента](StructureDefinition-form-027-medical-record-extract-composition.html), профилирована как FHIR-документ: регистрационные и личные данные, адрес, направление и диагноз, клинические данные, лечение и рекомендации, последующие мероприятия и ответственные лица в 8 разделах Composition. К ней прилагаются пример документа (Bundle) и [страница пополевого сопоставления](form-027-mapping.html).
+
+[Форма 003 - медицинская карта стационарного больного](StructureDefinition-form-003-inpatient-medical-record-composition.html) профилирована как FHIR-документ, охватывающий административные и личные сведения, поступление, осмотр при поступлении, первичный осмотр, план и результаты обследования, диагнозы, операции, листы назначений и процедур, температурный лист, течение болезни, исход лечения, временную нетрудоспособность, патологоанатомическое заключение и ответственных лиц в 20 разделах Composition. Для неё есть пример документа-Bundle и [страница пополевого сопоставления](form-003-mapping.html).
+
+[Форма 044, медицинская справка для выезжающих за границу](StructureDefinition-form-044-travel-clearance-composition.html), описана как FHIR-документ: личные данные, перенесённые инфекционные заболевания, заключение комиссии о допуске к выезду со страной назначения и сроком командировки, место жительства и председатель и члены комиссии в 5 разделах Composition. В комплекте пример документа (Bundle) и [страница пополевого сопоставления](form-044-mapping.html).
+
+#### Изменено
+
+Composition для [Форма 011](StructureDefinition-form-011-hemodialysis-composition.html), [Форма 066](StructureDefinition-form-066-hospital-discharge-composition.html), [Форма 066-1](StructureDefinition-form-066-1-psychiatric-discharge-composition.html) и [Форма 130](StructureDefinition-form-130-laboratory-test-results-composition.html) больше не фиксируют `status` как `final`, поэтому документ может проходить [жизненный цикл](document-statuses.html) через `preliminary`, `amended` и `entered-in-error`.
+
+JSON-копия ресурса на каждом языке теперь сохраняет остальные языки в расширениях `translation`, как в пакете; раньше в JSON по ссылкам с английских, русских и узбекских страниц они удалялись.
+
+### Версия 0.12.1
+
+#### Изменено
+
+Наборы значений [формы 097](form-097-mapping.html) и [формы 111](form-111-mapping.html) ссылаются на свои дополнения SNOMED CT и LOINC, поэтому их коды отображаются на русском и узбекском.
+
+Организации в примерах [формы 097](form-097-mapping.html) идентифицируются по ИНН Soliq, как и в примерах других форм начиная с 0.12.0. Medication витамина K - UZ Core Medication с кодом МНН, а документ датирован выпиской.
+
+Записи раздела профилактики и иммунизации [формы 097](StructureDefinition-form-097-newborn-development-composition.html) ссылаются на [UZ Core Immunization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-immunization.html) вместо любого Immunization, поэтому прививки в форме 097 соответствуют UZ Core.
+
+Системы кодов и наборы значений оценки компонентов Апгар, базового цвета кожи новорождённого и места ухода за новорождённым (`apgar-component-score-cs`, `newborn-skin-color-basic-cs`, `newborn-care-location-cs` и их наборы значений `-vs`) удалены. Ни один профиль к ним не привязан: форма 097 кодирует оценку по Апгар кодом LOINC, а цвет кожи - из [Newborn Skin Color Detailed](ValueSet-newborn-skin-color-detailed-vs.html).
+
+Записи регистрационного раздела [формы 111](StructureDefinition-form-111-pregnant-woman-individual-card-composition.html) также могут быть [UZ Core Socioeconomic Observation](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-socioeconomic-observation.html). В [Previous Pregnancy Outcome](ValueSet-form111-previous-pregnancy-outcome-vs.html) добавлен выкидыш (SNOMED CT `17369002`). [Сопоставление формы 111](form-111-mapping.html) описывает жизненный цикл Composition.status: `preliminary`, пока карта открыта, `final` после её закрытия, `amended` для последующих исправлений и `entered-in-error`, если карта отозвана как ошибочная. [Номер индивидуальной карты беременной](NamingSystem-antenatal-card-number-system.html) передаётся в EpisodeOfCare.identifier, а не в Encounter.identifier.
+
+#### Документация
+
+[Обзор форм](forms-overview.html) и страницы его 11 томов вместе с диаграммами доступны на русском и узбекском языках.
+
 ### Версия 0.12.0
 
 #### Добавлено

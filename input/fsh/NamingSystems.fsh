@@ -171,6 +171,24 @@ Usage: #definition
 * uniqueId[=].value = "https://dhp.uz/fhir/core/sid/doc/uz/antenatal-card-number"
 * uniqueId[=].preferred = true
 
+Instance: medical-certificate-number-system
+InstanceOf: NamingSystem
+Description: "Identifier system for medical certificate (tibbiy ma'lumotnoma) numbers in Uzbekistan"
+Usage: #definition
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/medical-certificate-number-system"
+* name = "UzbekistanMedicalCertificateNumber"
+* status = #active
+* kind = #identifier
+* publisher = "Uzinfocom"
+* responsible = "Ministry of Health of the Republic of Uzbekistan"
+* date = "2026-10-29"
+* description = "Number printed on a medical certificate (tibbiy ma'lumotnoma, MA'LUMOTNOMA №), assigned by the issuing organization. The value starts with the form number (e.g., 044-2026-001), so certificates of different forms share this system without colliding."
+* jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
+* usage = "Used in Composition.identifier[certificateNumber] for medical certificates such as Form 044"
+* uniqueId[0].type = #uri
+* uniqueId[=].value = "https://dhp.uz/fhir/core/sid/doc/uz/medical-certificate-number"
+* uniqueId[=].preferred = true
+
 Instance: sick-leave-number-system
 InstanceOf: NamingSystem
 Description: "Identifier system for sick leave certificate numbers (листок нетрудоспособности, ЛН) in Uzbekistan"
@@ -262,4 +280,40 @@ Usage: #definition
 * usage = "Used to identify hepatitis-related records and questionnaires in Uzbekistan"
 * uniqueId[0].type = #uri
 * uniqueId[=].value = "https://dhp.uz/fhir/core/sid/reg/uz/hepatitis"
+* uniqueId[=].preferred = true
+
+Instance: blood-registration-number-system
+InstanceOf: NamingSystem
+Description: "Identifier system for blood service registration numbers in Uzbekistan"
+Usage: #definition
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/blood-registration-number-system"
+* name = "UzbekistanBloodRegistrationNumber"
+* status = #active
+* kind = #identifier
+* publisher = "Uzinfocom"
+* responsible = "Ministry of Health of the Republic of Uzbekistan"
+* date = "2026-11-12"
+* description = "Number assigned by a blood service when it registers a person as a blood donor or a recipient."
+* jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
+* usage = "Used in Observation.identifier[registrationNumber] of the Blood Service Registration Observation"
+* uniqueId[0].type = #uri
+* uniqueId[=].value = "https://dhp.uz/fhir/core/sid/doc/uz/blood-registration"
+* uniqueId[=].preferred = true
+
+Instance: blood-service-request-number-system
+InstanceOf: NamingSystem
+Description: "Identifier system for blood service request numbers in Uzbekistan"
+Usage: #definition
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/blood-service-request-number-system"
+* name = "UzbekistanBloodServiceRequestNumber"
+* status = #active
+* kind = #identifier
+* publisher = "Uzinfocom"
+* responsible = "Ministry of Health of the Republic of Uzbekistan"
+* date = "2026-11-16"
+* description = "Number assigned by a blood service to an individual laboratory or blood component processing request."
+* jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
+* usage = "Used in ServiceRequest.identifier[orderNumber]. The value must be unique within the issuing organization, identified in Identifier.assigner."
+* uniqueId[0].type = #uri
+* uniqueId[=].value = "https://dhp.uz/fhir/core/sid/doc/uz/blood-service-request"
 * uniqueId[=].preferred = true

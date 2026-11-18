@@ -125,6 +125,7 @@ Alias: $local-observation-code = https://terminology.dhp.uz/fhir/integrations/Co
 Alias: $education-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/education-cs
 Alias: $occupation-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/position-and-profession-cs
 Alias: $benefit-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/benefits-cs
+Alias: $lab-categories-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/lab-categories-cs
 Alias: $citizenship = https://terminology.dhp.uz/fhir/core/CodeSystem/iso3166-two-letter-cs
 Alias: $practioner-role = http://terminology.hl7.org/CodeSystem/practitioner-role
 Alias: $social-status = https://terminology.dhp.uz/fhir/core/CodeSystem/social-status-cs
@@ -202,7 +203,6 @@ Alias: $profession-specialization-cs = https://terminology.dhp.uz/fhir/core/Code
 Alias: $newborn-daily-observation-component-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-daily-observation-component-cs
 Alias: $newborn-term-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-term-status-cs
 Alias: $infant-feeding-type-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/infant-feeding-type-cs
-Alias: $apgar-component-score-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/apgar-component-score-cs
 
 Alias: $ballard-skin-maturity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-skin-maturity-cs
 Alias: $ballard-lanugo-maturity-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-lanugo-maturity-cs
@@ -216,7 +216,6 @@ Alias: $ballard-square-window-cs = https://terminology.dhp.uz/fhir/integrations/
 Alias: $ballard-arm-recoil-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-arm-recoil-cs
 Alias: $ballard-popliteal-angle-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/ballard-popliteal-angle-cs
 
-Alias: $newborn-skin-color-basic-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-skin-color-basic-cs
 Alias: $newborn-skin-color-detailed-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-skin-color-detailed-cs
 Alias: $cyanosis-distribution-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/cyanosis-distribution-cs
 Alias: $normal-abnormal-status-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/normal-abnormal-status-cs
@@ -240,7 +239,6 @@ Alias: $newborn-birth-anthropometry-cs = https://terminology.dhp.uz/fhir/integra
 Alias: $breastfeeding-initiation-time-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/breastfeeding-initiation-time-cs
 Alias: $amniotic-fluid-appearance-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/amniotic-fluid-appearance-cs
 Alias: $newborn-signs-of-life-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-signs-of-life-cs
-Alias: $newborn-care-location-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/newborn-care-location-cs
 
 Alias: $condition-category = http://terminology.hl7.org/CodeSystem/condition-category
 Alias: $diagnosis-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/diagnosis-type-cs
@@ -290,3 +288,15 @@ Alias: $form096-newborn-eye-prophylaxis-cs = https://terminology.dhp.uz/fhir/int
 Alias: $form096-placenta-delivery-method-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/placenta-delivery-method-cs
 Alias: $composition-type-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/composition-type-cs
 Alias: $composition-category-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/composition-category-cs
+Alias: $form-044-observation-code-cs = https://terminology.dhp.uz/fhir/integrations/CodeSystem/form-044-observation-code-cs
+
+// Blood donor observations
+Alias: $blood-group-vs = https://terminology.dhp.uz/fhir/core/ValueSet/blood-group-vs
+Alias: $blood-registration-number = https://dhp.uz/fhir/core/sid/doc/uz/blood-registration
+Alias: $blood-rh-vs = https://terminology.dhp.uz/fhir/core/ValueSet/blood-rh-vs
+
+Alias: $blood-service-request-number = https://dhp.uz/fhir/core/sid/doc/uz/blood-service-request
+Alias: $blood-donation-number = https://dhp.uz/fhir/core/sid/prd/uz/blood/donation
+Alias: $blood-donor-eligibility-cs = https://terminology.dhp.uz/fhir/core/CodeSystem/blood-donor-eligibility-cs
+Alias: $flag-category = http://terminology.hl7.org/CodeSystem/flag-category
+Alias: $workflow-reason = http://hl7.org/fhir/StructureDefinition/workflow-reason

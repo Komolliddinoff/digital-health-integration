@@ -47,7 +47,7 @@ The sequence below shows those branches from one visit:
 | 030-3 | Statistical talon: patient removed from psychoneurological dispensary register | Sheet |
 | 035, 035-1 | VKK conclusion register (035); sick-leave (incapacity) extension register (035-1) | Register |
 | 037, 037-1 | General referral/exchange sheet (037); prenatal screening referral (037-1) | Referral |
-| 043, 044 | Medical certificates (foreign nationals; travel abroad) | Certificate |
+| 043, [044](form-044-mapping.html) | Medical certificates (foreign nationals; travel abroad) | Certificate |
 | 051 | Family nurse daily activity log | Register |
 | 053 | Military conscript treatment card | Card |
 | 056 | Determination of legal insanity | Conclusion |
@@ -63,4 +63,4 @@ The sequence below shows those branches from one visit:
 | 089 | First-time TB / STI / other notifiable diagnosis notification | Notification |
 | 090 | First-time cancer notification | Notification |
 | 091 | First-time narcology notification | Notification |
-| 111 | Pregnant and delivered woman individual card | Card |
+| [111](form-111-mapping.html) | Pregnant and delivered woman individual card | Card |

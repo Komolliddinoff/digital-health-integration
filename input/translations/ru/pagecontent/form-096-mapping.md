@@ -11,7 +11,7 @@
 
 ### Форма 096 - История родов
 
-На этой странице описано сопоставление полей Формы 096 (Tug'ruq tibbiy kartasi) с ресурсами FHIR.
+На этой странице описано сопоставление полей [Формы 096](forms-volume-01-inpatient.html) (Tug'ruq tibbiy kartasi) с ресурсами FHIR.
 
 ---
 
@@ -72,9 +72,9 @@
 | Chiqarilgan sana va vaqt | Дата и время выписки | Encounter.actualPeriod.end | - | 2026-08-18T15:00:00+05:00 |
 | O'tkazilgan kunlar | Проведено койко-дней | Encounter.length | UCUM `d` | 2.28 d |
 | Palata | Палата | Encounter.location.location → [Location](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-location.html).identifier[unit] | [UZ Core Location Kinds](https://dhp.uz/fhir/core/en/CodeSystem-location-kinds-cs.html) `Ward` | 12 |
-| Yo'llagan muassasa | Направившая организация | Encounter.admission.origin → Organization | [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html) | Chilonzor District Polyclinic No. 5 |
+| Yo'llagan muassasa | Направившая организация | Encounter.admission.origin → Organization | Organization | Chilonzor District Polyclinic No. 5 |
 | Gospitalizatsiya natijasi | Исход госпитализации | Encounter.admission.dischargeDisposition | [Form 096 Hospitalization Outcome](ValueSet-form-096-hospitalization-outcome-vs.html) | Discharged (`mserv-0004-00004`) |
-| O'tkazilgan muassasa | Учреждение перевода | Encounter.admission.destination → Organization | [Organization](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-organization.html) | - |
+| O'tkazilgan muassasa | Учреждение перевода | Encounter.admission.destination → Organization | Organization | - |
 | Onaning o'limi | Смерть матери | Patient.deceasedDateTime, или Patient.deceasedBoolean, если дата неизвестна | - | - |
 | Ona o'limining davri | Период смерти матери | Condition.code | [Maternal Death Timing](ValueSet-maternal-death-timing-vs.html) | - |
 | Qon guruhi | Группа крови | Observation.valueCodeableConcept | `code` LOINC `883-9` "ABO group [Type] in Blood"<br>`value` [Blood Group](https://terminology.dhp.uz/fhir/core/ValueSet/blood-group-vs) | A (II) (`112144000`) |
@@ -116,7 +116,7 @@
 | Avvalgi chaqaloqlar vazni | Вес предыдущих новорождённых | Observation.valueQuantity | LOINC `8339-4` "Birth weight Measured", как в Форме 111 | 3200 g, 3400 g |
 | Boshdan o'tkazgan kasalliklari | Перенесённые заболевания | [Condition](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-condition.html).code | ICD-10 | Iron deficiency anaemia, unspecified (`D50.9`) |
 | Ginekologik kasalliklari | Гинекологические заболевания | Condition.code; note | ICD-10 | Acute vaginitis (`N76.0`), treated in 2023 |
-| Akusherlik va epidemiologik anamnez | Акушерский и эпидемиологический анамнез | [QuestionnaireResponse](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-questionnaire-response.html).item.answer | [form-096-history](Questionnaire-form-096-history.html) `previous-pregnancies`, `epidemiological-history` | No recent infectious exposure or travel risk reported. |
+| Akusherlik va epidemiologik anamnez | Акушерский и эпидемиологический анамнез | [QuestionnaireResponse](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-questionnaire-response.html).item.answer | [form-096-history](forms.html?form=form-096-history) `previous-pregnancies`, `epidemiological-history` | No recent infectious exposure or travel risk reported. |
 
 ---
 
@@ -128,7 +128,7 @@
 
 | UZ | RU | Путь FHIR | Код | Пример значения |
 |----|----|------------|------|---------------|
-| Homiladorlikning kechishi va asoratlari | Течение и осложнения беременности | QuestionnaireResponse.item.answer | [form-096-current-pregnancy](Questionnaire-form-096-current-pregnancy.html) `current-pregnancy-course`, `condition-on-arrival` | Dichorionic diamniotic twin pregnancy; mild iron-deficiency anaemia. |
+| Homiladorlikning kechishi va asoratlari | Течение и осложнения беременности | QuestionnaireResponse.item.answer | [form-096-current-pregnancy](forms.html?form=form-096-current-pregnancy) `current-pregnancy-course`, `condition-on-arrival` | Dichorionic diamniotic twin pregnancy; mild iron-deficiency anaemia. |
 | Umumiy ahvoli | Общее состояние | Observation.valueCodeableConcept | `code` [Maternal and Fetal Examination Codes](ValueSet-maternal-examination-observation-code-vs.html) `chr-0005-00003` "General condition", как в Форме 111<br>`value` [Satisfactory Status](ValueSet-satisfactory-status-vs.html) | Satisfactory (`162669003`) |
 | Yurak | Сердце | Observation.valueString | LOINC `8702-3` "Physical findings of Heart" | Regular rhythm, no murmur. |
 | Puls | Пульс | Observation.valueQuantity | LOINC `8867-4` "Heart rate" | 82 /min |
@@ -195,7 +195,7 @@
 | Qog'onoq suvi | Характер околоплодных вод | Observation.valueCodeableConcept | `code` [Amniotic Fluid Appearance Code](ValueSet-amniotic-fluid-observation-code-vs.html) LOINC `1887-9` "Appearance of Amniotic fluid"<br>`value` [Amniotic Fluid Characteristic](ValueSet-amniotic-fluid-characteristic-vs.html) | Clear (`168090003`) |
 | Bachadon bo'yni to'liq ochilgan vaqt | Время полного раскрытия | Observation.valueQuantity; effectiveDateTime | [Cervical Dilation Code](ValueSet-cervical-dilation-measurement-code-vs.html) SNOMED `289825001` "Diameter of cervical dilatation" | 10 cm в 2026-08-16T12:05:00+05:00 |
 | Kuchanish boshlangan vaqt | Начало потуг | Observation.valueDateTime | только `code.text`, кода пока нет | 2026-08-16T12:10:00+05:00 |
-| Tug'ruqni qabul qildi | Роды принимала | [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).performer.function; performer.actor | `code` SNOMED `236973005` "Delivery procedure"<br>`function` [Birth Attendant](CodeSystem-birth-attendant-cs.html) `chr-0091-0001` "Birth attendant" | Tursunova N.S. |
+| Tug'ruqni qabul qildi | Роды принимала | Procedure.performer.function; performer.actor | `code` SNOMED `236973005` "Delivery procedure"<br>`function` [Birth Attendant](CodeSystem-birth-attendant-cs.html) `chr-0091-0001` "Birth attendant" | Tursunova N.S. |
 | Psixologik yordam va uning natijasi | Психологическая поддержка и её результат | Procedure.code; outcome | `code` SNOMED `698506008` "Supportive counseling"<br>`outcome` [Intervention Effectiveness](ValueSet-intervention-effectiveness-vs.html) | Successful (`385669000`) |
 | Og'riqsizlantirish uchun dori vositalari | Обезболивающие препараты | [MedicationAdministration](https://hl7.org/fhir/R5/medicationadministration.html).medication; occurence[x]; dosage | SNOMED CT | Analgesic (`373265006`) |
 | Yuborilgan dori vositalarining samarasi | Эффект введённых препаратов | Observation.valueCodeableConcept (`focus` = MedicationAdministration) | `code` [Labor Pain Relief Effect Code](ValueSet-maternal-labor-medication-effect-code-vs.html) `chr-0127-0001` "Effect of administered medication"<br>`value` [Intervention Effectiveness](ValueSet-intervention-effectiveness-vs.html) | Successful (`385669000`) |
@@ -284,7 +284,7 @@
 | UZ | RU | Путь FHIR | Код | Пример значения |
 |----|----|------------|------|---------------|
 | Muolaja buyurilishi | Назначение процедуры | ServiceRequest.code | `code.text`, если у процедуры нет кода | Perineal wound care |
-| Muolaja bajarilishi | Выполнение процедуры | [Procedure](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-procedure.html).code; occurrenceDateTime (`basedOn` = ServiceRequest) | `code.text`, если у процедуры нет кода | Perineal wound care, 2026-08-17T08:45:00+05:00 |
+| Muolaja bajarilishi | Выполнение процедуры | Procedure.code; occurrenceDateTime (`basedOn` = ServiceRequest) | `code.text`, если у процедуры нет кода | Perineal wound care, 2026-08-17T08:45:00+05:00 |
 
 ---
 
@@ -314,7 +314,7 @@
 
 | UZ | RU | Путь FHIR | Код | Пример значения |
 |----|----|------------|------|---------------|
-| Shifokor | Врач | [PractitionerRole](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-practitioner-role.html).practitioner; code | [UZ Core Position and Profession](https://dhp.uz/fhir/core/en/ValueSet-position-and-profession-vs.html) | Rasulova Malika Bahodirovna (`2222.1`) |
+| Shifokor | Врач | PractitionerRole.practitioner; code | [UZ Core Position and Profession](https://dhp.uz/fhir/core/en/ValueSet-position-and-profession-vs.html) | Rasulova Malika Bahodirovna (`2222.1`) |
 | Akusherka | Акушерка | PractitionerRole.practitioner; code | [UZ Core Position and Profession](https://dhp.uz/fhir/core/en/ValueSet-position-and-profession-vs.html) | Tursunova Nodira Saidovna (`3222.1`) |
 | Imzo | Подпись | [Provenance](https://dhp.uz/fhir/core/en/StructureDefinition-uz-core-provenance.html).signature | `type` [UZ Core Signature Type](https://dhp.uz/fhir/core/en/CodeSystem-signature-type-cs.html) | soliqAuth, 2026-08-18T15:30:00+05:00 |
 
