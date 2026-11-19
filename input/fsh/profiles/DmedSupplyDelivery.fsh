@@ -8,45 +8,25 @@ Description: "Integration profile for physical transfer of goods between warehou
 * ^publisher = "DHP Integration"
 
 
-* identifier ^slicing.discriminator.type = #value
-* identifier ^slicing.discriminator.path = "system"
-* identifier ^slicing.rules = #open
-* identifier ^slicing.description = "Slicing for movement transaction UUID and printable document number"
+* identifier[delivery] ^short = "Unique identifier of the transfer or return document"
+* identifier[delivery].value 1..1
+* identifier[delivery].value ^short = "DMED transactions.uuid"
 
-* identifier contains
-    movementId 0..1 MS and
-    documentNumber 0..1 MS
-
-* identifier[movementId] ^short = "Unique business identifier of the physical transfer document"
-  * system 1..1 
-  * system = "https://dhp.uz/fhir/core/sid/dmed/transactions"
-  * value 1..1 
-  * value ^short = "Transaction UUID (e.g., 019a4b75-6e10-7bd0-96da-b49b87531024)"
-* identifier[documentNumber] ^short = "Human-readable printable transfer waybill or return act number"
-  * system 1..1 
-  * system = "https://dhp.uz/fhir/core/sid/doc/uz/supply-delivery"
-  * value 1..1 
-  * value ^short = "Document number (e.g., TR-2026-00125)"
-
-* suppliedItem 
-  * item.reference only Reference(UZCoreInventoryItem)
-  * item.reference ^short = "Reference to SOURCE warehouse InventoryItem lot (Traceability)"
-  * quantity
-    * value ^short = "Delivered quantity in base units"
-    * system = "http://unitsofmeasure.org"
-    * code from http://hl7.org/fhir/ValueSet/ucum-units (required)
-    * code ^short = "UCUM base unit code: {tbl}, {amp}, {flacon}, 1"
+* suppliedItem
+  * itemReference only Reference(UZCoreInventoryItem)
+  * itemReference ^short = "Reference to SOURCE warehouse InventoryItem lot (Traceability)"
+  * quantity from UnitOfPackageVS (extensible)
+  * quantity.value ^short = "Delivered quantity in package units"
 
 * occurrenceDateTime ^short = "Timestamp of physical receipt confirmation"
 
+* destination ^short = "Receiving warehouse (transactions.destination_uuid)"
+
 * supplier only Reference(UZCoreOrganization)
-* supplier ^short = "Medical organization (juridical legal entity)"
+* supplier ^short = "Clinic that owns the source warehouse (source warehouse -> dmed_clinic_uuid)"
 
-* receiver only Reference(UZCorePractitionerRole)
-* receiver ^short = "Employee who physically verified and accepted the items in DMED"
-
-* extension contains
-    SupplyDeliveryDeliverFrom named deliverFrom 0..1 MS
+* receiver only Reference(UZCoreOrganization)
+* receiver ^short = "Clinic that owns the receiving warehouse (destination warehouse -> dmed_clinic_uuid)"
 
 * suppliedItem.extension contains
     SupplyDeliveryReturnReason named returnReason 0..1 MS
@@ -59,21 +39,19 @@ Usage: #example
 
 * status = #completed
 
-* identifier[movementId].value = "019a4b75-6e10-7bd0-96da-b49b87531024"
-* identifier[documentNumber].value = "TR-2026-00125"
+* identifier[delivery].value = "019a4b75-6e10-7bd0-96da-b49b87531024"
 
 * basedOn[0] = Reference(example-dmed-supply-request-line1)
 
 * suppliedItem[0]
-  * item.reference = Reference(example-inventory-item-rbc)
-  * quantity
-    * value = 40
-    * system = "http://unitsofmeasure.org"
-    * code = #{amp}
-    * unit = "amp"
+  * itemReference = Reference(InventoryItem/example-dmed-inventory-item-lot)
+  * quantity = UnitOfPrimaryPackageCS#pac-0001-00002 "Ampoule"
+  * quantity.value = 40
 
 * occurrenceDateTime = "2026-10-28T14:30:00Z"
 
+* destination = Reference(Location/example-location-2)
+
 * supplier = Reference(Organization/example-organization)
 
-* receiver = Reference(PractitionerRole/example-patronage-nurse-role)
+* receiver = Reference(Organization/example-organization)

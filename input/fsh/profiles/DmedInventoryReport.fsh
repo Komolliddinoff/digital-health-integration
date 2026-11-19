@@ -1,4 +1,6 @@
 Profile: DMEDInventoryReport
+// TODO: once uz.dhp.core > 0.12.0 is released, change Parent to UZCoreInventoryReport
+// and remove rules the parent already defines (e.g. inventoryListing.location only Reference(UZCoreLocation)).
 Parent: InventoryReport
 Id: dmed-inventory-report
 Title: "DMED InventoryReport Profile"
@@ -7,29 +9,20 @@ Description: "Integration profile for absolute post-operation balance snapshot (
 * ^experimental = true
 * ^publisher = "DHP Integration"
 
-* identifier 0..* 
 * identifier ^slicing.discriminator.type = #value
 * identifier ^slicing.discriminator.path = "system"
 * identifier ^slicing.rules = #open
-* identifier ^slicing.description = "Slicing for warehouse transaction UUID and human-readable document number"
+* identifier ^slicing.description = "Slicing for the warehouse transaction identifier"
+* identifier contains inventoryReport 0..1 MS
+* identifier[inventoryReport] ^short = "Unique identifier of the warehouse transaction"
+* identifier[inventoryReport].system 1..1 MS
+* identifier[inventoryReport].system = $inventory-report-number
+* identifier[inventoryReport].value 1..1 MS
+* identifier[inventoryReport].value ^short = "DMED transactions.uuid"
 
-* identifier contains
-    reportId 0..1 and
-    documentNumber 0..1
+* extension contains InventoryReportDocumentNumber named documentNumber 0..1 MS
 
-* identifier[reportId] ^short = "Unique business identifier of the warehouse transaction triggering the snapshot"
-* identifier[reportId].system 1..1 MS
-* identifier[reportId].system = "https://dhp.uz/fhir/core/sid/dmed/transactions"
-* identifier[reportId].value 1..1 MS
-* identifier[reportId].value ^short = "Transaction UUID (e.g., 019a4b75-6e10-7bd0-96da-b49b87531024)"
-
-* identifier[documentNumber] ^short = "Human-readable document or act number associated with the transaction (e.g., write-off act)"
-* identifier[documentNumber].system 1..1 MS
-* identifier[documentNumber].system = "https://dhp.uz/fhir/core/sid/doc/uz/inventory-report"
-* identifier[documentNumber].value 1..1 MS
-* identifier[documentNumber].value ^short = "Printable document number (e.g., WO-2026-00012)"
-
-* reporter only Reference(UZCorePractitionerRole)
+* reporter only Reference(UZCorePractitioner)
 * reporter ^short = "Warehouse manager or nurse who executed transaction"
 
 * inventoryListing ^short = "Container for warehouse inventory stock lines"
@@ -37,28 +30,13 @@ Description: "Integration profile for absolute post-operation balance snapshot (
 * inventoryListing.location ^short = "Affected warehouse Location (receiving for income, source for consumption/write-off)"
 
 * inventoryListing.item ^short = "Warehouse inventory stock balance rows"
-
-* inventoryListing.item.item.reference only Reference(UZCoreInventoryItem)
-* inventoryListing.item.item.reference ^short = "Reference to target InventoryItem stock batch record"
+* inventoryListing.item.item only CodeableReference(UZCoreInventoryItem)
+* inventoryListing.item.item ^short = "Reference to target InventoryItem stock batch record"
 
 * inventoryListing.item.quantity only SimpleQuantity
+* inventoryListing.item.quantity from UnitOfPackageVS (extensible)
 * inventoryListing.item.quantity ^short = "Current physical remaining stock balance after operation"
-
-//fhirdan shu qiymatlarni top cardinality tekshir
-* inventoryListing.item.quantity.value 1..1 
-* inventoryListing.item.quantity.value ^short = "Current remaining balance in minimal release form units"
-
-* inventoryListing.item.quantity.unit 0..1 
-* inventoryListing.item.quantity.unit ^short = "Human-readable display unit (e.g., 'табл', 'амп', 'шт')"
-
-* inventoryListing.item.quantity.system 0..1 
-* inventoryListing.item.quantity.system = "http://unitsofmeasure.org"
-* inventoryListing.item.quantity.system ^short = "International UCUM system URI"
-
-* inventoryListing.item.quantity.code 0..1 
-* inventoryListing.item.quantity.code from http://hl7.org/fhir/ValueSet/ucum-units (extensible)
-* inventoryListing.item.quantity.code ^short = "Standardized UCUM code (e.g., {tbl}, {amp}, {flacon}, 1)"
-
+* inventoryListing.item.quantity.value ^short = "Current remaining balance in package units"
 
 
 Instance: example-dmed-inventory-report-snapshot
@@ -70,20 +48,16 @@ Usage: #example
 * status = #active
 * countType = #snapshot
 
-* identifier[0]
-  * system = "https://dhp.uz/fhir/core/sid/doc/uz/inventory-report"
-  * value = "5c91b24e-1289-4fa2-bc40-d9811e548fa0"
+* identifier[inventoryReport].value = "019a4b75-6e10-7bd0-96da-b49b87531024"
+* extension[documentNumber].valueString = "WO-2026-00012"
 
 * reportedDateTime = "2026-10-28T14:35:00Z"
 
-* reporter = Reference(PractitionerRole/example-patronage-nurse-role)
+* reporter = Reference(Practitioner/example-practitioner)
 
 * inventoryListing[0]
   * location = Reference(Location/example-location-2)
   * item[0]
-    * item.reference = Reference(example-inventory-item-rbc)
-    * quantity
-      * value = 120
-      * system = "http://unitsofmeasure.org"
-      * code = #{tbl}
-      * unit = "tbl"
+    * item.reference = Reference(InventoryItem/example-dmed-inventory-item-lot)
+    * quantity = UnitOfPrimaryPackageCS#pac-0001-00002 "Ampoule"
+    * quantity.value = 120

@@ -15,26 +15,25 @@ Description: "Financial source category for inventory stocks and supply requisit
 Extension: SupplyDeliveryReturnReason
 Id: return-reason
 Title: "Supply Delivery Return Reason"
-Description: "Return reason coded concept for supplied item line in return transactions."
+Description: "Return reason as free text for supplied item line in return transactions."
 * ^status = #draft
 * ^experimental = true
 * ^context.type = #element
 * ^context.expression = "SupplyDelivery.suppliedItem"
-* value[x] 1..1 MS
-* value[x] only CodeableConcept
-* valueCodeableConcept from ReturnReasonVS (required)
+* value[x] only string
+* value[x] 0..1 MS
 
-Extension: SupplyDeliveryDeliverFrom
-Id: deliver-from
-Title: "Supply Delivery Deliver From"
-Description: "Reference to the dispatching source storage Location (warehouse/department)."
+Extension: InventoryReportDocumentNumber
+Id: inventory-report-document-number
+Title: "Inventory Report Document Number"
+Description: "Human-readable document or act number associated with a warehouse transaction (e.g., write-off act)."
 * ^status = #draft
 * ^experimental = true
 * ^context.type = #element
-* ^context.expression = "SupplyDelivery"
+* ^context.expression = "InventoryReport"
 * value[x] 1..1 MS
-* value[x] only Reference(UZCoreLocation)
-
+* value[x] only string
+* valueString ^short = "Printable document number (e.g., WO-2026-00012)"
 
 Extension: AdmissionOrigin
 Id: admission-origin

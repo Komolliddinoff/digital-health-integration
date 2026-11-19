@@ -317,3 +317,22 @@ Usage: #definition
 * uniqueId[0].type = #uri
 * uniqueId[=].value = "https://dhp.uz/fhir/core/sid/doc/uz/blood-service-request"
 * uniqueId[=].preferred = true
+
+Instance: uzb-inventory-report-number
+InstanceOf: NamingSystem
+Description: "Warehouse transaction identifiers for inventory reports in Uzbekistan"
+Usage: #definition
+
+* url = "https://terminology.dhp.uz/fhir/integrations/NamingSystem/uzb-inventory-report-number"
+* name = "UzbekistanInventoryReportNumber"
+* status = #active
+* kind = #identifier
+* publisher = "Uzinfocom"
+* responsible = "Ministry of Health of the Republic of Uzbekistan"
+* date = "2026-11-18"
+* description = "Naming system for warehouse transaction identifiers assigned by the warehouse information system (e.g., DMED transactions.uuid) to inventory reports."
+* jurisdiction = urn:iso:std:iso:3166#UZ "Uzbekistan"
+* usage = "Used in InventoryReport.identifier.system to identify the warehouse transaction that produced the inventory report. Values must be unique across participating systems within this namespace; UUIDs are recommended. Human-readable document or act numbers are not recorded here but in the inventory-report-document-number extension."
+* uniqueId[0].type = #uri
+* uniqueId[=].value = $inventory-report-number
+* uniqueId[=].preferred = true

@@ -1,53 +1,48 @@
-// Profile: DMEDMedication
-// Parent: UZCoreMedication
-// Id: dmed-medication
-// Title: "DMED Medication Profile"
-// Description: "Integration profile for hospital medicines, antibiotics, narcotics, psychotropics, chemotherapy, factors, and vaccines registered in DMED."
-// * ^status = #active
-// * ^experimental = true
-// * ^publisher = "DHP Integration"
-// // identiferga nima yozish kerak?
-// * identifier MS 
+Profile: DMEDMedication
+Parent: UZCoreMedication
+Id: dmed-medication
+Title: "DMED Medication Profile"
+Description: "Medicinal products from the Pharmcommittee registry (medication_type = drug) transferred from DMED Sklad."
+* ^status = #active
+* ^experimental = true
+* ^publisher = "DHP Integration"
 
-// * code ^short = "Trade name of the drug or vaccine in Russian/Uzbek"
+* identifier[globalTradeItemID].value ^short = "DMED medication_drug_trade_names.GTIN"
 
-// * doseForm ^short = "Text description of dosage form (e.g. Пастилки, Таблетки)"
+* code ^short = "Trade name of the drug from the Pharmcommittee registry in Russian/Uzbek"
 
-// Instance: example-dmed-medication-septoleted
-// InstanceOf: DMEDMedication
-// Title: "Example DMED Medication - Septolete Total"
-// Description: "Example medication instance for Septolete Total eucalyptus lozenges."
-// Usage: #example
+* doseForm from DMEDDosageFormVS (extensible)
+* doseForm ^short = "DMED dosage form (medication_drug_trade_names.dosage_form_id)"
 
-// * status = #active
+* ingredient.strengthRatio.numerator from UnitOfPackageVS (extensible)
+* ingredient.strengthRatio.denominator from UnitOfPackageVS (extensible)
 
-// * identifier[globalTradeItemID]
-//   * system = "https://mobile-api.aslbelgisi.uz/gtin"
-//   * value = "04780001234567"
 
-// * identifier[registrationCertificateID]
-//   * system = "https://uzpharminfo.uz/registration_number"
-//   * value = "DV/M 04810/02/25"
+Instance: example-dmed-medication-diclofenac
+InstanceOf: DMEDMedication
+Title: "Example DMED Medication - Diclofenac 75 mg/3 ml"
+Description: "Example medication instance for Diclofenac 75 mg/3 ml solution for injection in ampoules."
+Usage: #example
 
-// * code
-//   * text = "СЕПТОЛЕТЕ® ТОТАЛ ЭВКАЛИПТ"
-//   * system = "http://www.whocc.no/atc"
-//   * code = #A01AD02
+* status = #active
 
-// * doseForm.text = "Пастилки"
+* identifier[globalTradeItemID].value = "04780001234567"
 
-// * ingredient[0]
-//   * itemConcept.text = "Бензидамин"
-//   * strengthRatio
-//     * numerator
-//       * value = 3
-//       * unit = "mg"
-//       * system = "http://unitsofmeasure.org"
-//       * code = #mg
-//     * denominator
-//       * value = 1
-//       * unit = "{tbl}"
-//       * system = "http://unitsofmeasure.org"
-//       * code = #{tbl}
+* code
+  * text = "ДИКЛОФЕНАК 75 мг/3 мл"
+  * coding = $medical-product-classification#M01AB05
 
-// * marketingAuthorizationHolder = Reference(Organization/example-org-holder)
+* doseForm = DMEDDosageFormCS#51 "Injection solution"
+
+* ingredient[0]
+  * item.concept.text = "Диклофенак натрия"
+  * strengthRatio
+    * numerator
+      * value = 75
+      * unit = "mg"
+      * system = "http://unitsofmeasure.org"
+      * code = #mg
+    * denominator = UnitOfPrimaryPackageCS#pac-0001-00002 "Ampoule"
+    * denominator.value = 1
+
+* marketingAuthorizationHolder = Reference(Organization/example-organization)
